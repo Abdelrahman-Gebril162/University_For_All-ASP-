@@ -20,6 +20,9 @@ namespace University_For_All.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Faculty> Faculty { get; set; }
+        public DbSet<Student> Student { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
