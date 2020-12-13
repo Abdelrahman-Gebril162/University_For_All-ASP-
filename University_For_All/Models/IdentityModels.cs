@@ -22,6 +22,12 @@ namespace University_For_All.Models
     {
         public DbSet<Faculty> Faculty { get; set; }
         public DbSet<Student> Student { get; set; }
+        public DbSet<Grade> Grades { get; set; }
+        public DbSet<Take> Takes { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Rank> Ranks { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

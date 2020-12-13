@@ -10,6 +10,7 @@ namespace University_For_All.Models
         public int id { get; set; }
         public string st_fname { get; set; }
         public string st_lname { get; set; }
+        public DateTime st_DateOfBirth { get; set; }
         public string st_address { get; set; }
         public string st_city { get; set; }
         public int st_phone { get; set; }
@@ -17,8 +18,10 @@ namespace University_For_All.Models
         public string st_password { get; set; }
         public string st_confirmPassword { get; set; }
         public string st_picture { get; set; }
-        public byte st_level { get; set; }
+        public int st_level { get; set; }
+        public bool Undergrad { get; set; }
+        public DateTime enroll_date { get; set; }
         public Faculty Faculty { get; set; }
-        public byte FacultyId { get; set; }
+        public int FacultyId { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace University_For_All.Models
         public string fc_name { get; set; }
         public string fc_description { get; set; }
         public DateTime fc_created_at { get; set; }
-        public byte fc_levels_num { get; set; }
-        public byte fc_spicial_year { get; set; }
+        public int fc_levels_num { get; set; }
+        public int fc_spicial_year { get; set; }
         public string fc_logo { get; set; }
     }
 }
