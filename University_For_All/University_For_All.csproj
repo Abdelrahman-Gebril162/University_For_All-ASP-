@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -217,6 +218,10 @@
     <Compile Include="Migrations\202012162150138_MissingXXX.Designer.cs">
       <DependentUpon>202012162150138_MissingXXX.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012171515047_adddatatofaculties.cs" />
+    <Compile Include="Migrations\202012171515047_adddatatofaculties.Designer.cs">
+      <DependentUpon>202012171515047_adddatatofaculties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
@@ -318,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012162150138_MissingXXX.resx">
       <DependentUpon>202012162150138_MissingXXX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171515047_adddatatofaculties.resx">
+      <DependentUpon>202012171515047_adddatatofaculties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
