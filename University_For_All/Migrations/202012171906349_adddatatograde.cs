@@ -11,6 +11,7 @@ namespace University_For_All.Migrations
             Sql("insert into Grades(points) values(2)");
             Sql("insert into Grades(points) values(3)");
             Sql("insert into Grades(points) values(4)");
+
         }
         
         public override void Down()
