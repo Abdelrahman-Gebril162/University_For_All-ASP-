@@ -222,6 +222,38 @@
     <Compile Include="Migrations\202012171515047_adddatatofaculties.Designer.cs">
       <DependentUpon>202012171515047_adddatatofaculties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012171855502_adddatatodepartment.cs" />
+    <Compile Include="Migrations\202012171855502_adddatatodepartment.Designer.cs">
+      <DependentUpon>202012171855502_adddatatodepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012171858594_adddatatostudent.cs" />
+    <Compile Include="Migrations\202012171858594_adddatatostudent.Designer.cs">
+      <DependentUpon>202012171858594_adddatatostudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012171901122_adddatatorank.cs" />
+    <Compile Include="Migrations\202012171901122_adddatatorank.Designer.cs">
+      <DependentUpon>202012171901122_adddatatorank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012171902556_adddatatoinstructor.cs" />
+    <Compile Include="Migrations\202012171902556_adddatatoinstructor.Designer.cs">
+      <DependentUpon>202012171902556_adddatatoinstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012171905143_adddatatocourses.cs" />
+    <Compile Include="Migrations\202012171905143_adddatatocourses.Designer.cs">
+      <DependentUpon>202012171905143_adddatatocourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012171906349_adddatatograde.cs" />
+    <Compile Include="Migrations\202012171906349_adddatatograde.Designer.cs">
+      <DependentUpon>202012171906349_adddatatograde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012171911336_adddatatotakes.cs" />
+    <Compile Include="Migrations\202012171911336_adddatatotakes.Designer.cs">
+      <DependentUpon>202012171911336_adddatatotakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012172021205_adddatatograde1.cs" />
+    <Compile Include="Migrations\202012172021205_adddatatograde1.Designer.cs">
+      <DependentUpon>202012172021205_adddatatograde1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
@@ -326,6 +358,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012171515047_adddatatofaculties.resx">
       <DependentUpon>202012171515047_adddatatofaculties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171855502_adddatatodepartment.resx">
+      <DependentUpon>202012171855502_adddatatodepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171858594_adddatatostudent.resx">
+      <DependentUpon>202012171858594_adddatatostudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171901122_adddatatorank.resx">
+      <DependentUpon>202012171901122_adddatatorank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171902556_adddatatoinstructor.resx">
+      <DependentUpon>202012171902556_adddatatoinstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171905143_adddatatocourses.resx">
+      <DependentUpon>202012171905143_adddatatocourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171906349_adddatatograde.resx">
+      <DependentUpon>202012171906349_adddatatograde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012171911336_adddatatotakes.resx">
+      <DependentUpon>202012171911336_adddatatotakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012172021205_adddatatograde1.resx">
+      <DependentUpon>202012172021205_adddatatograde1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
