@@ -254,6 +254,18 @@
     <Compile Include="Migrations\202012172021205_adddatatograde1.Designer.cs">
       <DependentUpon>202012172021205_adddatatograde1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012190024166_addLatterToGradeModel.cs" />
+    <Compile Include="Migrations\202012190024166_addLatterToGradeModel.Designer.cs">
+      <DependentUpon>202012190024166_addLatterToGradeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012190025443_addDataToGradeLatter.cs" />
+    <Compile Include="Migrations\202012190025443_addDataToGradeLatter.Designer.cs">
+      <DependentUpon>202012190025443_addDataToGradeLatter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012190032004_addAnnotationToGradeLatter.cs" />
+    <Compile Include="Migrations\202012190032004_addAnnotationToGradeLatter.Designer.cs">
+      <DependentUpon>202012190032004_addAnnotationToGradeLatter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
@@ -382,6 +394,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012172021205_adddatatograde1.resx">
       <DependentUpon>202012172021205_adddatatograde1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012190024166_addLatterToGradeModel.resx">
+      <DependentUpon>202012190024166_addLatterToGradeModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012190025443_addDataToGradeLatter.resx">
+      <DependentUpon>202012190025443_addDataToGradeLatter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012190032004_addAnnotationToGradeLatter.resx">
+      <DependentUpon>202012190032004_addAnnotationToGradeLatter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
