@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<University_For_All.Models.Take>
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+</style>
+<div class="container">
+    @Html.ActionLink("Edit", "Edit", "Student", new { id = @Model.First().Studentid }, null)<br />
+    <h3>@Model.First().Student.Department.name</h3>
+    <ul>
+        @foreach (var course in @Model.ToList())
+        {
+            <li>@course.Course.cr_title</li>
+            <li>@course.Course.cr_credit_hours</li>
+        }
+    </ul>
+</div>
+
+

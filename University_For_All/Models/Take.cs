@@ -14,5 +14,6 @@ namespace University_For_All.Models
         public int Courseid { get; set; }
         public Grade Grade { get; set; }
         public int Gradeid { get; set; }
+        
     }
 }

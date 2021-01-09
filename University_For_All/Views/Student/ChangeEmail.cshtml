@@ -1,0 +1,36 @@
+﻿@model University_For_All.Models.Student
+
+@{
+    ViewBag.Title = "ChangeEmail";
+}
+
+<h2>Change Email</h2>
+
+@using (Html.BeginForm("Save","Student"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.st_email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.st_email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.st_email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.Hidden("from", "changeEmail")
+        @Html.HiddenFor(s=>s.id)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
