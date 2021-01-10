@@ -34,7 +34,7 @@ namespace University_For_All.Models
         public string st_phone { get; set; }
         [Required]
         [Display(Name = "Email")]
-        [RegularExpression(@"^\w+@gmail\.com$", ErrorMessage = "webSite Accept only(Gmail)")]
+        [RegularExpression(@"^[\w.+\-]+@gmail\.com$", ErrorMessage = "webSite Accept only(Gmail)")]
         public string st_email { get; set; }
         [Required]
         [Display(Name = "Password")]
