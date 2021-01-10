@@ -52,8 +52,11 @@ namespace University_For_All.Controllers
 
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        public async Task<ActionResult> Index(ManageMessageId? message,int? id)
         {
+
+            var db =new ApplicationDbContext();
+            var student = db.Student.SingleOrDefault(s => s.id == id);
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
@@ -72,7 +75,7 @@ namespace University_For_All.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
-            return View(model);
+            return View(student);
         }
 
         //
