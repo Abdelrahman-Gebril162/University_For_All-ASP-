@@ -1,87 +1,123 @@
-﻿@model University_For_All.Models.IndexViewModel
+﻿@model University_For_All.Models.Student
+
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "JustStudent";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>JustStudent</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Student</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
+
         <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
+            <img src="@Url.Content(Model.st_picture)" style="width: 200px; height: 200px; border-radius: 50%;" alt="Image for @string.Join(" ",Model.st_fname,Model.st_lname)" />
         </dd>
-        <dt>External Logins:</dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_fname)
+        </dt>
+
         <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
+            @Html.DisplayFor(model => model.st_fname)
         </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-             
-             See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-             
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*  
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-        *@
-        <dt>Two-Factor Authentication:</dt>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_lname)
+        </dt>
+
         <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
+            @Html.DisplayFor(model => model.st_lname)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty.fc_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty.fc_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Undergrad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Undergrad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enroll_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enroll_date)
+        </dd>
+
     </dl>
 </div>
+<p>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Change Password", "Edit", new { id = Model.id ,routename="change Password"}) |
+    @Html.ActionLink("Change Email", "Edit", new { id = Model.id, routename = "change Email" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.id})
+</p>

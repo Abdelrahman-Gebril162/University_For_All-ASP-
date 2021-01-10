@@ -25,7 +25,24 @@ namespace University_For_All
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css"
+                      ));
+
+            #region HomeLayout
+            bundles.Add(new ScriptBundle("~/home/js").Include(
+                "~/Scripts/jquery-1.12.1.min.js",
+                "~/Scripts/bootstrap.min.js"));
+
+            bundles.Add(new StyleBundle("~/home/css").Include(
+                "~/Content/bootstrap.min.css",
+                "~/Content/bootstrap.css",
+                "~/Content/font-awesome.min.css",
+                "~/Content/style.css"
+            ));
+
+
+            #endregion
+
         }
     }
 }
