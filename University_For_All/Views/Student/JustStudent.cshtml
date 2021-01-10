@@ -1,0 +1,123 @@
+﻿@model University_For_All.Models.Student
+
+@{
+    ViewBag.Title = "JustStudent";
+}
+
+<h2>JustStudent</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dd>
+            <img src="@Url.Content(Model.st_picture)" style="width: 200px; height: 200px; border-radius: 50%;" alt="Image for @string.Join(" ",Model.st_fname,Model.st_lname)" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_fname)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_lname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty.fc_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty.fc_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Undergrad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Undergrad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enroll_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enroll_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Change Password", "Edit", new { id = Model.id ,routename="change Password"}) |
+    @Html.ActionLink("Change Email", "Edit", new { id = Model.id, routename = "change Email" })
+    @Html.ActionLink("Delete", "Delete", new { id = Model.id})
+</p>
