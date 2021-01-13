@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using University_For_All.Models;
+using University_For_All.ViewModels;
 
 namespace University_For_All.Controllers
 {
@@ -16,8 +17,9 @@ namespace University_For_All.Controllers
         ApplicationDbContext db =new ApplicationDbContext();
         public ActionResult Index()
         {
-
-            return View();
+            var contactUsAndStudent = new ContactUsAndStudent();
+            
+            return View(contactUsAndStudent);
         }
 
         public ActionResult About()

@@ -296,6 +296,7 @@
     <Compile Include="Models\Take.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ContactUsAndStudent.cs" />
     <Compile Include="ViewModels\NewStudentViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
