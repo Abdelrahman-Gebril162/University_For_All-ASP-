@@ -199,6 +199,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -296,6 +297,7 @@
     <Compile Include="Models\Take.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ContactUsAndStudent.cs" />
     <Compile Include="ViewModels\NewStudentViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +308,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Fstyle.css" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\1.jpg" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\2.jpg" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\3.jpg" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\4.jpg" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\Group 1233.svg" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\Group 604.svg" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\Group 706.svg" />
+    <Content Include="Content\Site%28Image,video%29\Faculty\Image\logo.png" />
     <Content Include="Content\Site%28Image,video%29\Home\Image\1.jpeg" />
     <Content Include="Content\Site%28Image,video%29\Home\Image\2.jpeg" />
     <Content Include="Content\Site%28Image,video%29\Home\Image\3.jpeg" />
@@ -319,6 +330,7 @@
     <Content Include="Content\Site%28Image,video%29\Home\Image\repsentation.png" />
     <Content Include="Content\Site%28Image,video%29\Home\Video\veideo.mp4" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\simple-sidebar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -438,9 +450,14 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Home\_HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Faculty\_FacultyLayout.cshtml" />
+    <Content Include="Views\Faculty\Index.cshtml" />
+    <Content Include="Views\Faculty\New.cshtml" />
+    <Content Include="Views\Faculty\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\FacultyImage\" />
     <Folder Include="Upload\StudentImage\" />
   </ItemGroup>
   <ItemGroup>
