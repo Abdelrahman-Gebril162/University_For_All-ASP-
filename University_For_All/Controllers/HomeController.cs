@@ -29,20 +29,25 @@ namespace University_For_All.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Contact(ContactUs contact)
+        public ActionResult Contacts(ContactUs contactUs)
         {
-            var mail = new MailMessage();
-            var loginInfo = new NetworkCredential("abdo.gebril2000@gmail.com", "abdo162giprelwork");
-            mail.From =new MailAddress(contact.Email);
-            mail.To.Add(new MailAddress("abdo.gebril2000@gmail.com"));
-            mail.Body = "sender Email : " + contact.Email +"\n"+ 
-                "sender Message : " +contact.Message;
-            var smtpClient =new SmtpClient("smtp.gmail.com",587);
-            smtpClient.EnableSsl = true;
+            if (ModelState.IsValid)
+            {
+                var mail = new MailMessage();
+                var loginInfo = new NetworkCredential("abdo.gebril2000@gmail.com", "abdo162giprelwork");
+                mail.From = new MailAddress(contactUs.Email);
+                mail.To.Add(new MailAddress("abdo.gebril2000@gmail.com"));
+                mail.Body = "sender Email : " + contactUs.Email + "\n" +
+                            "sender Message : " + contactUs.Message;
+                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                smtpClient.EnableSsl = true;
+
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = loginInfo;
+                smtpClient.Send(mail);
+                return RedirectToAction("Index", "Faculty");
+            }
             
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = loginInfo;
-            smtpClient.Send(mail);
             return View("Index");
         }
     }

@@ -15,6 +15,16 @@
     var picture = student == null ? "&#9776;" : student.st_picture;
 
 }
+<style>
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .dropdown>.dropdown-toggle:active {
+        /*Without this, clicking will make it sticky
+        // pointer-events: none;*/
+    }
+</style>
 <section class="lets-learn">
     <div class="slogon">
         Let's Learn
@@ -32,7 +42,7 @@
 
             <div class="nav-links">
                 <ul>
-                    <li><a href="#">Faculties</a></li>
+                    <li><a href="\Faculty">Faculties</a></li>
                     <li><a href="#">ChatApp</a></li>
                     <li> <a href="#about">About us</a></li>
                     <li><a href="#contact">Contact us </a></li>
@@ -41,9 +51,19 @@
                             Adminstration ▼
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">User_Role</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Student</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Staff</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Faculties</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Departments</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Courses</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Enrolement</a>
                         </div>
                     </li>
                 </ul>
@@ -271,12 +291,12 @@
                         Feel free to connect us any time.<br>
                         We will get back to you as soon as we can!
                     </p>
-                    @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                    @using (Html.BeginForm("Contacts", "Home", FormMethod.Post))
                     {
-                        @Html.TextBoxFor(model => model.ContactUs.Email, new { placeholder = " Your Email", @class = "form-input" })
-                        @Html.ValidationMessageFor(model => model.ContactUs.Email, "", new { @class = "text-danger" })
-                        @Html.TextBoxFor(model => model.ContactUs.Message, new { placeholder = "Type Your Message", @class = "form-input" })
-                        @Html.ValidationMessageFor(model => model.ContactUs.Message, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.ContactUs.Email, "", new { @calss = "form-input", placeholder = "Your Email" })
+                        @Html.ValidationMessageFor(m=>m.ContactUs.Email, "", new { @class = "text-danger" })
+                        @Html.TextAreaFor(m => m.ContactUs.Message, new { @calss = "md-textarea form-control", placeholder = "Type Your Message", cols = 42,rows=3 ,id="form23"})
+                        @Html.ValidationMessageFor(m=>m.ContactUs.Message,"",new {@class="text-danger"})
                         <button type="submit" style="margin-top: 0px" class="btn btn-secondary btn-sm">Send</button>
                     }
 
@@ -300,19 +320,19 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
                     <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-                </svg>&nbsp;amirazak1032000@gmail.com
+                </svg>Team5@gmail.com
             </p>
             <p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
-                </svg>&nbsp;0607849372827
+                </svg>&nbsp;01277613449
             </p>
             <p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-watch" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4 14.333v-1.86A5.985 5.985 0 0 1 2 8c0-1.777.772-3.374 2-4.472V1.667C4 .747 4.746 0 5.667 0h4.666C11.253 0 12 .746 12 1.667v1.86A5.985 5.985 0 0 1 14 8a5.985 5.985 0 0 1-2 4.472v1.861c0 .92-.746 1.667-1.667 1.667H5.667C4.747 16 4 15.254 4 14.333zM13 8A5 5 0 1 0 3 8a5 5 0 0 0 10 0z" />
                     <path d="M13.918 8.993A.502.502 0 0 0 14.5 8.5v-1a.5.5 0 0 0-.582-.493 6.044 6.044 0 0 1 0 1.986z" />
                     <path fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H6a.5.5 0 0 1 0-1h1.5V5a.5.5 0 0 1 .5-.5z" />
-                </svg>&nbsp;7 am - 8 am
+                </svg>&nbsp;24 Hours
             </p>
             <p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
@@ -323,6 +343,11 @@
         </div>
     </div>
 </section>
+
+
+
+
+
 
 
 

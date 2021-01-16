@@ -39,10 +39,19 @@ namespace University_For_All
                 "~/Content/font-awesome.min.css",
                 "~/Content/style.css"
             ));
-
-
             #endregion
+            #region HomeLayout
+            bundles.Add(new ScriptBundle("~/faculty/js").Include(
+                "~/Scripts/jquery-1.12.1.min.js",
+                "~/Scripts/bootstrap.min.js"));
 
+            bundles.Add(new StyleBundle("~/faculty/css").Include(
+                "~/Content/bootstrap.min.css",
+                "~/Content/bootstrap.css",
+                "~/Content/font-awesome.min.css",
+                "~/Content/Fstyle.css"
+            ));
+            #endregion
         }
     }
 }
