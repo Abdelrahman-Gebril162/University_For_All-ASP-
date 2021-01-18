@@ -1,0 +1,57 @@
+﻿@model IEnumerable<University_For_All.Models.Student>
+
+@{
+    ViewBag.Title = "Faculty-Students";
+    Layout = "~/Views/Faculty/_FacultyDetailsLayout.cshtml";
+}
+
+<style>
+    .cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        max-height: 200vh;
+    }
+
+    .card {
+        width: 250px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    }
+
+    .card img {
+        width: 100%;
+        max-height: 150px;
+    }
+
+    .card .text {
+        padding: 0 20px 20px;
+    }
+
+    .card .text > .button {
+        background: gray;
+        border: 0;
+        color: white;
+        padding: 10px;
+        width: 100%;
+    }
+</style>
+
+<h2 style="text-align: center">Students Cards</h2>
+<main class="container cards ">
+    @foreach (var student in Model)
+    {
+
+        <article class="card">
+            <img class="img-responsive" src="@Url.Content(student.st_picture)" alt="picture for @student.st_fname">
+            <div class="text">
+                <h3><b>@string.Join(" ", student.st_fname, student.st_lname)</b></h3>
+                <h5> @student.Faculty.fc_name</h5>
+                @Html.ActionLink("More Info", "Details", "Student", new { id = student.id }, new { @class = "button" })
+            </div>
+        </article>
+
+    }
+</main>

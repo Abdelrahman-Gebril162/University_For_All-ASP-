@@ -282,6 +282,10 @@
     <Compile Include="Migrations\202101052249349_changeStudentPhoneToString.Designer.cs">
       <DependentUpon>202101052249349_changeStudentPhoneToString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101171503168_addFacultyToInstructor.cs" />
+    <Compile Include="Migrations\202101171503168_addFacultyToInstructor.Designer.cs">
+      <DependentUpon>202101171503168_addFacultyToInstructor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContactUs.cs" />
@@ -454,6 +458,13 @@
     <Content Include="Views\Faculty\Index.cshtml" />
     <Content Include="Views\Faculty\New.cshtml" />
     <Content Include="Views\Faculty\Details.cshtml" />
+    <Content Include="Views\Faculty\Edit.cshtml" />
+    <Content Include="Views\Faculty\Delete.cshtml" />
+    <Content Include="Views\Faculty\_FacultyDetailsLayout.cshtml" />
+    <Content Include="Views\Faculty\Staff.cshtml" />
+    <Content Include="Views\Faculty\Departments.cshtml" />
+    <Content Include="Views\Faculty\Courses.cshtml" />
+    <Content Include="Views\Faculty\Students.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -521,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101052249349_changeStudentPhoneToString.resx">
       <DependentUpon>202101052249349_changeStudentPhoneToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101171503168_addFacultyToInstructor.resx">
+      <DependentUpon>202101171503168_addFacultyToInstructor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

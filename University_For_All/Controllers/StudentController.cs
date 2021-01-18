@@ -98,7 +98,6 @@ namespace University_For_All.Controllers
             }
             return View(studentDetails);
         }
-
         [HttpGet]
         [Route("Student/Edit/{id}/{routename?}")]
         public ActionResult Edit(int id,string routename)
