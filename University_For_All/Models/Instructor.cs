@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,5 +18,7 @@ namespace University_For_All.Models
         
         public Rank Rank { get; set; }
         public int Rankid { get; set; }
+        public Faculty Faculty { get; set; }
+        public int  Facultyid { get; set; }
     }
 }

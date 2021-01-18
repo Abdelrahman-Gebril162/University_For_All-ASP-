@@ -1,0 +1,56 @@
+﻿@model IEnumerable<University_For_All.Models.Instructor>
+@{
+    ViewBag.Title = "Faculty-Staff";
+    Layout = "~/Views/Faculty/_FacultyDetailsLayout.cshtml";
+}
+
+<style>
+    .cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        max-height: 200vh;
+    }
+
+    .card {
+        width: 250px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    }
+
+        .card img {
+            width: 100%;
+            max-height: 150px;
+        }
+
+        .card .text {
+            padding: 0 20px 20px;
+        }
+
+            .card .text > .button {
+                background: gray;
+                border: 0;
+                color: white;
+                padding: 10px;
+                width: 100%;
+            }
+</style>
+
+<h2 style="text-align: center">Staff Cards</h2>
+<main class="container cards ">
+    
+    @foreach(var staff in Model)
+    { 
+        <article class="card">
+            <img class="img-responsive" src="@Url.Content(@staff.inst_picture)" alt="picture for @staff.inst_lname">
+            <div class="text">
+                <h3><b>@string.Join(" ", staff.ints_fname, staff.inst_lname)</b></h3>
+                <h5> @staff.Faculty.fc_name</h5>
+                @Html.ActionLink("More Info", "Details", "Student", new { id = staff.id }, new { @class = "button" })
+            </div>
+        </article>
+    }
+</main>
+
