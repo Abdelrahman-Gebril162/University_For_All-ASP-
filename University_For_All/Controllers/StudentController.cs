@@ -44,7 +44,7 @@ namespace University_For_All.Controllers
                 Departments = departments,
                 Faculties = faculties
             };
-
+            ViewBag.Faculty = new SelectList(faculties,"id","fc_name");
             return View(newStudent);
         }
         //Action for send new Student To DataBase
@@ -83,7 +83,12 @@ namespace University_For_All.Controllers
             }
             return RedirectToAction("Index");
         }
-            
+        public JsonResult GetDepartmentList(int id)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var departmetnList = db.Departments.Where(d => d.Facultyid == id).ToList();
+            return Json(departmetnList,JsonRequestBehavior.AllowGet);
+        }
         // GET: Student
        
         [HttpGet]
@@ -167,7 +172,9 @@ namespace University_For_All.Controllers
         public ActionResult Delete(Student student)
         {
             var editedstudent = db.Student.SingleOrDefault(s => s.id == student.id);
-
+            var studentEnroll = db.Takes.Where(t => t.Studentid == student.id).ToList();
+            db.Takes.RemoveRange(studentEnroll);
+            db.SaveChanges();
             var user = UserManeger.FindByEmail(editedstudent.st_email);
             UserManeger.Delete(user);
             db.Student.Remove(db.Student.Single(s => s.id ==editedstudent.id));
