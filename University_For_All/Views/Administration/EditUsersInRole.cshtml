@@ -1,0 +1,36 @@
+﻿@model List<University_For_All.ViewModels.UserRoleViewModels>
+@{
+    ViewBag.Title = "EditUsersInRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var roleid = ViewBag.roleId;
+}
+
+@using (Html.BeginForm("EditUserInRole", "Administration", FormMethod.Post))
+{ 
+    <div class="card">
+        <div class="card-header">
+            <h2>Add or remove users from this role</h2>
+        </div>
+        <div class="card-body">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="form-check m-1">
+                    @Html.HiddenFor(model => model[i].UserId)
+                    @Html.HiddenFor(model => model[i].UserName)
+                    @Html.CheckBoxFor(model => model[i].IsSelected, new { @class = "form-check-input" })
+                    <label class="form-check-label">
+                        @Model[i].UserName
+                    </label>
+                </div>
+            }
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Update" class="btn btn-primary"
+                   style="width:auto" />
+            <a href="/Administration/Edit/@roleid"
+               class="btn btn-primary" style="width:auto">Cancel</a>
+            
+        </div>
+    </div>
+    @Html.Hidden("roleId",(string)@ViewBag.roleId)
+}
