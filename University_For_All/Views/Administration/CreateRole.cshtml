@@ -1,0 +1,17 @@
+﻿@model University_For_All.ViewModels.CreateRoleViewModels
+@{
+    ViewBag.Title = "CreateRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 align="center">Create New Role</h2>
+
+@using (Html.BeginForm("CreateRole", "Administration", FormMethod.Post))
+{
+    @Html.LabelFor(model => model.RoleName, new {@class="form-label"})
+    <div class="form-group">
+        @Html.TextBoxFor(model=>model.RoleName,new {@class="form-control"})
+        @Html.ValidationMessageFor(model => model.RoleName,null,new {@class="text-danger"})
+    </div>
+<button type="submit" class="btn btn-primary"> Create Role</button>
+}

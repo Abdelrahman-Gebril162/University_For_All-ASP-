@@ -86,10 +86,12 @@ namespace University_For_All.Controllers
             var faculty = db.Faculty.SingleOrDefault(f => f.id == id);
             return View(faculty);
         }
+        [HttpPost]
         public ActionResult Delete(Faculty faculty)
         {
             var studentInthisFaculty = db.Student.Where(s => s.FacultyId == faculty.id).ToList();
             var InstructorInthisFaculty = db.Instructors.Where(I => I.Facultyid == faculty.id).ToList();
+            var oldImg = faculty.fc_logo.Substring(22);
             foreach (var student in studentInthisFaculty)
             {
                 db.Takes.Remove(db.Takes.Single(t=>t.Studentid==student.id));
@@ -100,7 +102,7 @@ namespace University_For_All.Controllers
                 db.Instructors.Remove(db.Instructors.Single(I => I.id == instructor.id));
                 db.SaveChanges();
             }
-
+            System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\FacultyImage\" + oldImg);
             db.Faculty.Remove(db.Faculty.Single(f => f.id == faculty.id));
             db.SaveChanges();
             return RedirectToAction("Index");

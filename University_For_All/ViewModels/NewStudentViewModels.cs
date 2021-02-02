@@ -16,5 +16,8 @@ namespace University_For_All.ViewModels
         public List<Faculty> Faculties { get; set; }
         
         public List<Department> Departments { get; set; }
+
+        public int FacultyId { get; set; }
+        public int  DepartmentId { get; set; }
     }
 }

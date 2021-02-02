@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "ListRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Roles</h2>
+
+@if (Model.Any())
+{
+    <a href="/Administration/CreateRole" class="btn btn-primary" style="width:auto;">
+        Create Role
+    </a>
+    foreach (var item in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Role Id: @item.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    @item.Name
+                </h5>
+                <div class="card-footer">
+                     @using(Html.BeginForm("DeleteRole","Administration",FormMethod.Post)) 
+                    {
+                        <a href="/Administration/Edit/@item.Id" class="btn btn-primary">Edit</a>
+                        <span id="confirmDeleteSpan_@item.Id" style="display: none">
+                            <span>Are you sure you want to delete this role?</span>
+                            <button type="submit" class="btn btn-danger"> Yes </button>
+                            <a href="#" class="btn btn-primary" onclick="confirmDelete('@item.Id',false)">No</a>
+                        </span>
+
+                        <span id="deleteSpan_@item.Id">
+                            <a href="#" class="btn btn-danger" onclick="confirmDelete('@item.Id',true)">Delete</a>
+                        </span>
+                        @Html.Hidden("id",item.Id);
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    }
+
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No roles Created Yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a role
+                
+            </h5>
+            <a class="btn btn-primary" style="width:auto;"
+               asp-controller="Administration" asp-action="CreateRole">
+                Create Role
+            </a>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-1.12.1.min.js"></script>
+<script>
+    function confirmDelete(id, isDeleteClicked) {
+        var deleteSpan = 'deleteSpan_' + id;
+        var confirmDeleteSpan = 'confirmDeleteSpan_' + id;
+        if (isDeleteClicked) {
+            $('#' + deleteSpan).hide();
+            $('#' + confirmDeleteSpan).show();
+        } else {
+            $('#' + deleteSpan).show();
+            $('#' + confirmDeleteSpan).hide();
+        }
+        }
+</script>
