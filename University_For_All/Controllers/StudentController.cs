@@ -35,9 +35,9 @@ namespace University_For_All.Controllers
         {
             var departments = db.Departments.ToList();
             var faculties = db.Faculty.ToList();
-            if (faculties.Count==0 && departments.Count==0)
+            if (faculties.Count==0 | departments.Count==0)
             {
-                return Content("Please add Faculty or Department first");
+                return Content("Please add Faculty And Department first");
             }
             var newStudent = new StudentNewStudentViewModels()
             {
@@ -81,7 +81,7 @@ namespace University_For_All.Controllers
                 else
                     return Content("<h2>Thers is User With The same <span style='color:red'> Phone Number</span> | <span style='color:Blue'> Email</span></h2>");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         public JsonResult GetDepartmentList(int id)
         {
@@ -94,13 +94,27 @@ namespace University_For_All.Controllers
         [HttpGet]
         public ActionResult Details(int? id)
         {
-            var studentDetails = db.Takes.Include(t=>t.Student.Department).Include(t => t.Student).Include(t => t.Course).Include(t => t.Grade).ToList()
+            var studentDetails = db.Takes.Include(t=>t.Student.Department).Include(t=>t.Course.Instructor).Include(t => t.Student).Include(t => t.Course).Include(t => t.Grade).ToList()
                 .Where(t => t.Studentid == id);
             if (studentDetails.Count()==0)
             {
                 var studentDetails2 = db.Student.Include(s=>s.Department).Include(s=>s.Faculty).SingleOrDefault(s => s.id == id);
+                @ViewBag.Studentid = studentDetails2.id;
                 return View("JustStudent",studentDetails2);
             }
+            var courseNum = studentDetails.Count();
+            var totalGrade = 0;
+            foreach (var course in studentDetails)
+            {
+                if (course.Gradeid !=null)
+                {
+                    totalGrade += course.Course.cr_credit_hours + course.Grade.points;
+                }
+                
+            }
+            ViewBag.gpa = totalGrade / courseNum;
+            ViewBag.faculty = db.Faculty.Find(studentDetails.First().Student.FacultyId).fc_name;
+            @ViewBag.Studentid = studentDetails.First().Studentid;
             return View(studentDetails);
         }
         [HttpGet]
@@ -153,16 +167,21 @@ namespace University_For_All.Controllers
                 editedstudent.st_city = student.st_city;
                 editedstudent.st_phone = student.st_phone;
                 var oldImg = editedstudent.st_picture.Substring(22);
-                System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\StudentImage\"+ oldImg);
-                var path = Path.Combine(Server.MapPath("~/Upload/StudentImage"), upload.FileName);
-                upload.SaveAs(path);
-                editedstudent.st_picture = "~/Upload/StudentImage/" + upload.FileName;
+                
+                if (upload != null)
+                {
+                    System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\StudentImage\" + oldImg);
+                    var path = Path.Combine(Server.MapPath("~/Upload/StudentImage"), upload.FileName);
+                    upload.SaveAs(path);
+                    editedstudent.st_picture = "~/Upload/StudentImage/" + upload.FileName;
+                }
                 db.SaveChanges();
-
             }
-            return Content("saved");
+               
+            return RedirectToAction("Index","Home");
 
         }
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             var student = db.Student.SingleOrDefault(s => s.id == id);
@@ -173,13 +192,15 @@ namespace University_For_All.Controllers
         {
             var editedstudent = db.Student.SingleOrDefault(s => s.id == student.id);
             var studentEnroll = db.Takes.Where(t => t.Studentid == student.id).ToList();
+            var oldImg = editedstudent.st_picture.Substring(22);
+            System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\StudentImage\" + oldImg);
             db.Takes.RemoveRange(studentEnroll);
             db.SaveChanges();
             var user = UserManeger.FindByEmail(editedstudent.st_email);
             UserManeger.Delete(user);
             db.Student.Remove(db.Student.Single(s => s.id ==editedstudent.id));
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         private IAuthenticationManager AuthenticationManager
         {

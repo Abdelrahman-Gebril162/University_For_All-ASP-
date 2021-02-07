@@ -1,0 +1,42 @@
+﻿@model University_For_All.Models.Take
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Take</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.cr_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.cr_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.Latter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade.Latter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.st_fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.st_fname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

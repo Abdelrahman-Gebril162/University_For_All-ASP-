@@ -1,0 +1,23 @@
+﻿@model University_For_All.Models.Instructor
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>@string.Join(" ",Model.ints_fname,Model.inst_lname)</h4>
+    <hr />
+    @using (Html.BeginForm("Delete","Staff")) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        @Html.HiddenFor(s => s.id)
+    }
+</div>

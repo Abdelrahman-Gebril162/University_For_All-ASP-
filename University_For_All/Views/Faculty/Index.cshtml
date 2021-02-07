@@ -1,4 +1,5 @@
-﻿@model IEnumerable<University_For_All.Models.Faculty>
+﻿@using University_For_All.Models
+@model IEnumerable<University_For_All.Models.Faculty>
 
 @{
     ViewBag.Title = "Index";
@@ -6,6 +7,10 @@
 }
 @{
     var right = true;
+    var db= new ApplicationDbContext();
+    var staffFaculty = db.Instructors.SingleOrDefault(i => i.ints_email == User.Identity.Name);
+    var result = db.Faculty.Find(staffFaculty.Facultyid);
+    
 }
 <section class="creative">
     @foreach (var faculty in @Model)
@@ -13,15 +18,37 @@
         if (right)
         {
             <div class="right">
-                <a href="/Faculty/Details?id=@faculty.id">
-                    <h1>@faculty.fc_name</h1><img src="@Url.Content(faculty.fc_logo)">
-                </a>
+                @if (faculty.id == result.id)
+                {
+                    <a href="/Faculty/Details?id=@faculty.id">
+                        <h1>@faculty.fc_name</h1><img src="@Url.Content(faculty.fc_logo)">
+                    </a>
+
+                }
+                else
+                {
+                    <h1 title="You Are Not Allowed Here">@faculty.fc_name</h1><img src="@Url.Content(faculty.fc_logo)" title="You Are Not Allowed Here">
+                }
+                
             </div>
             right = false;
         }
         else
         {
-            <div class="left"><a href="/Faculty/Details?id=@faculty.id"><h1>@faculty.fc_name</h1><img src="@Url.Content(faculty.fc_logo)"></a></div>
+            <div class="left">
+
+                @if (faculty.id == result.id)
+                {
+                    <a href="/Faculty/Details?id=@faculty.id">
+                        <h1>@faculty.fc_name</h1><img src="@Url.Content(faculty.fc_logo)">
+                    </a>
+
+                }
+                else
+                {
+                    <h1 title="You Are Not Allowed Here" style="cursor: not-allowed">@faculty.fc_name</h1><img src="@Url.Content(faculty.fc_logo)" style="cursor: not-allowed"title="You Are Not Allowed Here">
+                }
+            </div>
             right = true;
         }
     }

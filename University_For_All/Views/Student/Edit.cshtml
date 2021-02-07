@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";
 }
 
 <h2>Edit</h2>
@@ -36,7 +37,7 @@
 
     @Html.HiddenFor(s=>s.id)
     @Html.Hidden("from", "Edit")
-    <button type="submit" class="btn btn-primary">Save</button> 
+    <button type="submit" class="btn btn-outline-success">Save</button> 
 }
 
 <script type="text/javascript">

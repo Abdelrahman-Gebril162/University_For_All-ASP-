@@ -1,0 +1,73 @@
+﻿@model University_For_All.Models.Course
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty.fc_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty.fc_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instructor.ints_fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.ints_fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cr_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cr_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cr_credit_hours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cr_credit_hours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cr_term)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cr_term)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cr_level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cr_level)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

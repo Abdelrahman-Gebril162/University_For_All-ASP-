@@ -33,33 +33,43 @@
 
                 <div class="nav-links">
                     <ul>
-                        <li><a href="#"> Home</a> </li>
+                        <li><a href="/Home"> Home</a> </li>
                         <li><a href="#"> ChatApp</a> </li>
-                        <li><a href="#">My Profile</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Adminstration ▼
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">User_Role</a>
+                                <a class="dropdown-item" href="/Administration/ListRoles">Roles</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Student</a>
+                                <a class="dropdown-item" href="/Administration/manageStudent">Student</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/Facutly/Staff/@Model.">Staff</a>
+                                <a class="dropdown-item" href="/Administration/manageStaff">Staff</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Faculties</a>
+                                <a class="dropdown-item" href="/Administration/manageFaculty">Faculties</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Departments</a>
+                                <a class="dropdown-item" href="/Departments/Index">Departments</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Courses</a>
+                                <a class="dropdown-item" href="/Courses/Index">Courses</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Enrolement</a>
+                                <a class="dropdown-item" href="/Takes/Index">Enrolement</a>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="dropdown">
-                    @Html.Partial("_LoginPartial")
+                    @if (User.IsInRole("professor") | User.IsInRole("admin"))
+                    {
+                        @Html.Partial("_StaffLoginPartial")
+                    }
+                    else if (User.IsInRole("student"))
+                    {
+                        @Html.Partial("_LoginPartial")
+                    }
+                    else
+                    {
+                        @Html.Partial("_LoginPartial")
+                    }
                 </div>
                 <div>
                     <a href="/home"><img src="~/Content/Site(Image,video)/Faculty/Image/logo.png" style="width: 100px" class="img-responsive" alt=""></a>

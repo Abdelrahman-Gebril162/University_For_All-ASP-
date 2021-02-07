@@ -1,123 +1,55 @@
-﻿@model University_For_All.Models.Student
+﻿
+@using Microsoft.Ajax.Utilities
+@model University_For_All.Models.Student
 
 @{
-    ViewBag.Title = "JustStudent";
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+
 }
 
-<h2>JustStudent</h2>
+<style>
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 " style="text-align: center;">
+            <img src="@Url.Content(Model.st_picture)" class="amira">
 
-<div>
-    <h4>Student</h4>
-    <hr />
-    <dl class="dl-horizontal">
+            <a> <figcaption class="figure-caption">edit photo</figcaption></a>
 
-        <dd>
-            <img src="@Url.Content(Model.st_picture)" style="width: 200px; height: 200px; border-radius: 50%;" alt="Image for @string.Join(" ",Model.st_fname,Model.st_lname)" />
-        </dd>
+        </div>
+        <div class=" bor col-lg-5 ">
+            <h2>
+                @string.Concat(Model.st_fname, " ", Model.st_lname)
+            </h2>
+            <br>
+            <br>
+            <p>
+                Faculty:  @Model.Faculty.fc_name
+            </p>
+            <p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.st_fname)
-        </dt>
+                Level:  @Model.st_level
+            </p>
+            <p>
+                Department:  @Model.Department.name
+            </p>
+            <p>
+                GPA  : Null
+            </p>
+            <p>
+                gmail : @Model.st_email
+            </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.st_fname)
-        </dd>
+        </div>
 
+        <div class="bor col-lg-5">
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.st_lname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.st_lname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.st_DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.st_DateOfBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.st_address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.st_address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.st_city)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.st_city)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.st_phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.st_phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.st_email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.st_email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Faculty.fc_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Faculty.fc_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Department.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Department.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.st_level)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.st_level)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Undergrad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Undergrad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.enroll_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.enroll_date)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Change Password", "Edit", new { id = Model.id ,routename="change Password"}) |
-    @Html.ActionLink("Change Email", "Edit", new { id = Model.id, routename = "change Email" })
-    @Html.ActionLink("Delete", "Delete", new { id = Model.id})
-</p>
+
+
+<div class="container">
+    <text style="font-size: 6vw; font-weight: bolder; color: white;text-align:center"> I'm Not Taking Any Course For Now 😁</text>
+</div>

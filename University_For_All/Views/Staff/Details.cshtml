@@ -1,0 +1,63 @@
+﻿@model University_For_All.Models.Instructor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Staff/_StaffProfile.cshtml";
+}
+
+<style>
+    div p {
+        line-height: 20px;
+    }
+</style>
+<div class="container">
+<div class="row">
+    <div class="col-lg-2 " style="text-align: center;">
+        <img src="@Url.Content(Model.inst_picture)" class="amira">
+
+        <a> <figcaption class="figure-caption">edit photo</figcaption></a>
+
+    </div>
+    <div class="bor col-lg-5 ">
+        <h2>
+            @string.Concat(Model.ints_fname, " ", Model.inst_lname)
+        </h2>
+        <br>
+        <br>
+        <p>
+            Faculty:  @Model.Faculty.fc_name
+        </p>
+        <p>
+
+            Rank:  @Model.Rank.name
+        </p>
+        <p>
+            gmail : @Model.ints_email
+        </p>
+
+    </div>
+
+    <div class="bor col-lg-5">
+    </div>
+
+</div>
+</div>
+    
+<div class="container">
+    <h1 align="center">I am Teaching</h1>
+    <div class="row">
+
+        @foreach (var take in @ViewBag.courses)
+        {
+
+            <div class="org col-lg-4">
+                <div class="column">
+                    <h1 align="center"> @take.cr_title</h1>
+                    <hr/>
+                    <p><span style="color: white; font-size: 25px;">+</span><span style="color: brown; font-weight: bold;">Credit Hours : </span> @take.cr_credit_hours </p>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

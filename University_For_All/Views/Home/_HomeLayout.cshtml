@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity.Owin
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,24 +52,36 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/Administration/ListRoles">Roles</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="\Student">Student</a>
+                            <a class="dropdown-item" href="/Administration/manageStudent">Student</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Staff</a>
+                            <a class="dropdown-item" href="/Administration/manageStaff">Staff</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="\Faculty">Faculties</a>
+                            <a class="dropdown-item" href="/Administration/manageFaculty">Faculties</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Departments</a>
+                            <a class="dropdown-item" href="/Departments/Index">Departments</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Courses</a>
+                            <a class="dropdown-item" href="/Courses/Index">Courses</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Enrolement</a>
+                            <a class="dropdown-item" href="/Takes/Index">Enrolement</a>
                         </div>
                     </li>
                 </ul>
 
             </div>
             <div class="dropdown">
-                @Html.Partial("_LoginPartial")
+                @if (User.IsInRole("professor") | User.IsInRole("admin"))
+                {
+                    @Html.Partial("_StaffLoginPartial")
+                }
+                else if (User.IsInRole("student"))
+                {
+                    @Html.Partial("_LoginPartial")
+                }
+                else
+                {
+                    @Html.Partial("_LoginPartial")
+                }
+                
             </div>
         </div>
 

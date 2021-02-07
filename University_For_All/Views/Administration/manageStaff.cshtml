@@ -1,0 +1,58 @@
+﻿@model IEnumerable<University_For_All.Models.Instructor>
+
+@{
+    ViewBag.Title = "manageStudent";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";
+}
+
+<div class="container mt-3">
+    <h2 align="center">
+        Manegement Section For Staff
+    </h2>
+    <input class="form-control" id="myInput" type="text" placeholder="&#x1F50D;Search..">
+    <br>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Faculty</th>
+            <th>Rank</th>
+            <th>Photo</th>
+            <th colspan="3" style="text-align: center">Manage Links</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        @foreach (var instructor in Model)
+        {
+            <tr>
+                <td>@instructor.id</td>
+                <td>@string.Concat(@instructor.ints_fname,' ',@instructor.inst_lname)</td>
+                <td>@instructor.Faculty.fc_name</td>
+                <td>@instructor.Rank.name</td>
+                <td>
+                    <img src="@Url.Content(instructor.inst_picture)" style="width: 30px; height: 30px; border-radius: 50%;" />
+                </td>
+                <td><a href="/Staff/Edit/@instructor.id" class="btn btn-primary" style=" width: auto;height: auto">Edit</a></td>
+                <td><a href="/Staff/Delete/@instructor.id" class="btn btn-danger">Delete</a></td>
+                <td><a href="#" class="btn btn-secondary">Report</a></td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<p>
+    <a href="/Staff/New" class="btn btn-primary" style="position: fixed; left:0; bottom: 0; width: auto;height: auto"> Create New</a>
+</p>
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

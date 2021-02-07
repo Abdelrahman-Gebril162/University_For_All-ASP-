@@ -1,0 +1,72 @@
+﻿@model IEnumerable<University_For_All.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";
+}
+
+
+<div class="container mt-3">
+    <h2 align="center">
+        Manegement Section For Courses
+    </h2>
+    <input class="form-control" id="myInput" type="text" placeholder="&#x1F50D;Search..">
+    <br>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cr_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Faculty.fc_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instructor.ints_fname)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.cr_credit_hours)
+        </th>
+        <th></th>
+    </tr>
+    <tbody id="myTable">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cr_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty.fc_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructor.ints_fname)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.cr_credit_hours)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary", @style = "width:auto;height:auto" })
+                @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>
+    <p>
+        <a href="/Courses/Create" class="btn btn-primary" style="position: fixed; left:0; bottom: 0; width: auto;height: auto">Create New</a>
+    </p>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
