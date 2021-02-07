@@ -1,0 +1,44 @@
+﻿
+@using Microsoft.AspNet.Identity
+@using University_For_All.Models
+
+@{
+    var db = new ApplicationDbContext();
+    var student = db.Instructors.SingleOrDefault(s => s.ints_email == User.Identity.Name);
+    string profile="";
+    if (student!=null)
+    {
+        profile = "My"+ " Profile";
+    }
+
+}
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"><img style="width: 50px; height: 50px;border-radius: 50%" src="@Url.Content(student.inst_picture)" alt="@student.ints_fname image" />
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li>
+                    @Html.ActionLink(profile, "Details", "Staff", new {id = @student.id}, htmlAttributes: new {title = "Profile"})
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        </div>
+    }
+}
+else
+{
+    <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"><span style="font-weight: bolder">&#9776;</span>
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li style="color: deeppink; font-size:xx-small;">Only Staff Or<br/> Student Can Access</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    </div>
+   
+}

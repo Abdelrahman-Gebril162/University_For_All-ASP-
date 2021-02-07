@@ -7,7 +7,7 @@
     string profile="";
     if (student!=null)
     {
-       profile = "Your"+ " Profile";
+       profile = "My"+ " Profile";
     }
 
 }
@@ -22,7 +22,7 @@
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li>
-                    @Html.ActionLink(profile, "Index", "Manage", new {id = @student.id}, htmlAttributes: new {title = "Profile"})
+                    @Html.ActionLink(profile, "Details", "Student", new {id = @student.id}, htmlAttributes: new {title = "Profile"})
                 </li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>

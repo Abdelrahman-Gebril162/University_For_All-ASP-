@@ -200,10 +200,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TakesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -287,6 +291,42 @@
     <Compile Include="Migrations\202101171503168_addFacultyToInstructor.Designer.cs">
       <DependentUpon>202101171503168_addFacultyToInstructor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102051911154_ValidateInstructor.cs" />
+    <Compile Include="Migrations\202102051911154_ValidateInstructor.Designer.cs">
+      <DependentUpon>202102051911154_ValidateInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102052014415_makeStaffInCoursesNullable.cs" />
+    <Compile Include="Migrations\202102052014415_makeStaffInCoursesNullable.Designer.cs">
+      <DependentUpon>202102052014415_makeStaffInCoursesNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102061452220_ValidateCourseModel.cs" />
+    <Compile Include="Migrations\202102061452220_ValidateCourseModel.Designer.cs">
+      <DependentUpon>202102061452220_ValidateCourseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102061454185_validateDepartmentModel.cs" />
+    <Compile Include="Migrations\202102061454185_validateDepartmentModel.Designer.cs">
+      <DependentUpon>202102061454185_validateDepartmentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102061505221_ValidateFacultyModel.cs" />
+    <Compile Include="Migrations\202102061505221_ValidateFacultyModel.Designer.cs">
+      <DependentUpon>202102061505221_ValidateFacultyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102061509582_ValidateTakemodel.cs" />
+    <Compile Include="Migrations\202102061509582_ValidateTakemodel.Designer.cs">
+      <DependentUpon>202102061509582_ValidateTakemodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102061546586_compositeUniqueStudentandCourse.cs" />
+    <Compile Include="Migrations\202102061546586_compositeUniqueStudentandCourse.Designer.cs">
+      <DependentUpon>202102061546586_compositeUniqueStudentandCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102062105356_makeImgnullInStaff.cs" />
+    <Compile Include="Migrations\202102062105356_makeImgnullInStaff.Designer.cs">
+      <DependentUpon>202102062105356_makeImgnullInStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102062249205_imgNullInFaculty.cs" />
+    <Compile Include="Migrations\202102062249205_imgNullInFaculty.Designer.cs">
+      <DependentUpon>202102062249205_imgNullInFaculty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContactUs.cs" />
@@ -305,6 +345,7 @@
     <Compile Include="ViewModels\ContactUsAndStudent.cs" />
     <Compile Include="ViewModels\CreateRoleViewModels.cs" />
     <Compile Include="ViewModels\EditRoleViewModels.cs" />
+    <Compile Include="ViewModels\NewStaffViewModels.cs" />
     <Compile Include="ViewModels\NewStudentViewModels.cs" />
     <Compile Include="ViewModels\UserRoleViewModels.cs" />
   </ItemGroup>
@@ -317,6 +358,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Fstyle.css" />
+    <Content Include="Content\profileStyle.css" />
     <Content Include="Content\Site%28Image,video%29\Faculty\Image\1.jpg" />
     <Content Include="Content\Site%28Image,video%29\Faculty\Image\2.jpg" />
     <Content Include="Content\Site%28Image,video%29\Faculty\Image\3.jpg" />
@@ -414,7 +456,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Student\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -473,6 +514,36 @@
     <Content Include="Views\Administration\ListRoles.cshtml" />
     <Content Include="Views\Administration\Edit.cshtml" />
     <Content Include="Views\Administration\EditUsersInRole.cshtml" />
+    <Content Include="Views\Administration\manageStudent.cshtml" />
+    <Content Include="Views\Staff\New.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Staff\New - Copy.cshtml" />
+    <Content Include="Views\Staff\ChangePassword.cshtml" />
+    <Content Include="Views\Staff\ChangeEmail.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\Staff\Delete.cshtml" />
+    <Content Include="Views\Administration\manageStaff.cshtml" />
+    <Content Include="Views\Administration\manageFaculty.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Takes\Create.cshtml" />
+    <Content Include="Views\Takes\Delete.cshtml" />
+    <Content Include="Views\Takes\Details.cshtml" />
+    <Content Include="Views\Takes\Edit.cshtml" />
+    <Content Include="Views\Takes\Index.cshtml" />
+    <Content Include="Views\Home\_HomeLayout2.cshtml" />
+    <Content Include="Views\Shared\_ProfileLayout.cshtml" />
+    <Content Include="Views\Staff\_StaffProfile.cshtml" />
+    <Content Include="Views\Shared\_StaffLoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -543,6 +614,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101171503168_addFacultyToInstructor.resx">
       <DependentUpon>202101171503168_addFacultyToInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102051911154_ValidateInstructor.resx">
+      <DependentUpon>202102051911154_ValidateInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102052014415_makeStaffInCoursesNullable.resx">
+      <DependentUpon>202102052014415_makeStaffInCoursesNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102061452220_ValidateCourseModel.resx">
+      <DependentUpon>202102061452220_ValidateCourseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102061454185_validateDepartmentModel.resx">
+      <DependentUpon>202102061454185_validateDepartmentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102061505221_ValidateFacultyModel.resx">
+      <DependentUpon>202102061505221_ValidateFacultyModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102061509582_ValidateTakemodel.resx">
+      <DependentUpon>202102061509582_ValidateTakemodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102061546586_compositeUniqueStudentandCourse.resx">
+      <DependentUpon>202102061546586_compositeUniqueStudentandCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102062105356_makeImgnullInStaff.resx">
+      <DependentUpon>202102062105356_makeImgnullInStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102062249205_imgNullInFaculty.resx">
+      <DependentUpon>202102062249205_imgNullInFaculty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

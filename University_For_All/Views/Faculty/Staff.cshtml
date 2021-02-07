@@ -48,7 +48,10 @@
             <div class="text">
                 <h3><b>@string.Join(" ", staff.ints_fname, staff.inst_lname)</b></h3>
                 <h5> @staff.Faculty.fc_name</h5>
-                @Html.ActionLink("More Info", "Details", "Student", new { id = staff.id }, new { @class = "button" })
+                @if (User.IsInRole("admin"))
+                {
+                    @Html.ActionLink("More Info", "Details", "Staff", new { id = staff.id }, new { @class = "button" })
+                }
             </div>
         </article>
     }

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using University_For_All.Models;
 using University_For_All.ViewModels;
+using System.Data.Entity;
 
 namespace University_For_All.Controllers
 {
@@ -181,6 +182,22 @@ namespace University_For_All.Controllers
                 }
             }
             return RedirectToAction("Edit", new { id = roleId });
+        }
+
+        public ActionResult manageStudent()
+        {
+            var students = db.Student.Include(s=>s.Faculty).Include(s=>s.Department).ToList();
+            return View(students);
+        }
+        public ActionResult manageStaff()
+        {
+            var staff = db.Instructors.Include(s => s.Faculty).Include(s => s.Rank).ToList();
+            return View(staff);
+        }
+        public ActionResult manageFaculty()
+        {
+            var Faculty = db.Faculty.ToList();
+            return View(Faculty);
         }
     }
 }

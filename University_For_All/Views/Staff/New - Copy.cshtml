@@ -1,0 +1,126 @@
+﻿@model University_For_All.ViewModels.NewStaffViewModels
+@{
+    ViewBag.Title = "New Staff";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";
+}
+
+<h2>Add New Staff</h2>
+
+@using (Html.BeginForm("New", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Instructor.inst_picture, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="image-upload">
+                <label for="file-input">
+                    <img id="image_preview" src="~/images/staff.png" style="cursor: pointer; width: 100px; height: 100px; border-radius: 50%;" />
+                </label>
+
+                <input id="file-input" name="upload" type="file" onchange="readfile(this)" style="display: none" />
+            </div>
+            @Html.ValidationMessageFor(model => model.Instructor.inst_picture, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instructor.ints_fname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Instructor.ints_fname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Instructor.ints_fname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instructor.inst_lname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Instructor.inst_lname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Instructor.inst_lname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group ">
+            @Html.LabelFor(model => model.Instructor.ints_email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Instructor.ints_email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Instructor.ints_email, "", new { @class = "text-danger" })
+                <h4>@ViewBag.message</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instructor.inst_password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Instructor.inst_password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Instructor.inst_password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instructor.inst_confirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Instructor.inst_confirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Instructor.inst_confirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instructor.Facultyid, "FacultyId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Instructor.Facultyid, new SelectList(@Model.Faculties,"id","fc_name"), "-- Select Faculty --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Instructor.Facultyid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instructor.Rankid, "RankId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Instructor.Rankid, new SelectList(@Model.Ranks,"id","name"), "-- Select Rank --", new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Instructor.Rankid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+
+    function readfile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script src="~/Scripts/jquery-1.12.1.min.js"></script>
+@*<script>
+    $(document).ready(function() {
+        $("#Student_FacultyId").change(function() {
+            $.get("/Student/GetDepartmentList",
+                { id: $("#Student_FacultyId").val() },
+                function(data) {
+                    $("#Student_DepartmentId").empty();
+                    $.each(data,
+                        function(index, row) {
+                            $("#Student_DepartmentId")
+                                .append("<option value ='" + row.id + "'>" + row.name + "</option>")
+                        });
+                });
+        })
+    });
+</script>*@

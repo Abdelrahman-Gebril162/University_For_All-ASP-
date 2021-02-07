@@ -49,7 +49,8 @@
             <div class="text">
                 <h3><b>@string.Join(" ", student.st_fname, student.st_lname)</b></h3>
                 <h5> @student.Faculty.fc_name</h5>
-                @Html.ActionLink("More Info", "Details", "Student", new { id = student.id }, new { @class = "button" })
+                @if(User.IsInRole("professor"))
+                    {@Html.ActionLink("More Info", "Details", "Student", new { id = student.id }, new { @class = "button" })}
             </div>
         </article>
 

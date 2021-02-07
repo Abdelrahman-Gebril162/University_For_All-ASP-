@@ -1,21 +1,76 @@
 ﻿
+@using Microsoft.Ajax.Utilities
 @model IEnumerable<University_For_All.Models.Take>
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+
 }
+
 <style>
 </style>
 <div class="container">
-    @Html.ActionLink("Edit", "Edit", "Student", new { id = @Model.First().Studentid }, null)<br />
-    <h3>@Model.First().Student.Department.name</h3>
-    <ul>
-        @foreach (var course in @Model.ToList())
-        {
-            <li>@course.Course.cr_title</li>
-            <li>@course.Course.cr_credit_hours</li>
-        }
-    </ul>
+    <div class="row">
+        <div class="col-lg-2 " style="text-align: center;">
+            <img src="@Url.Content(Model.First().Student.st_picture)" class="amira">
+
+            <a> <figcaption class="figure-caption">edit photo</figcaption></a>
+
+        </div>
+        <div class=" bor col-lg-5 ">
+            <h2>
+                @string.Concat(Model.First().Student.st_fname, " ", Model.First().Student.st_lname)
+            </h2>
+            <br>
+            <br>
+            <p>
+                Faculty:  @ViewBag.faculty
+            </p>
+            <p>
+
+                Level:  @Model.First().Student.st_level
+            </p>
+            <p>
+                Department:  @Model.First().Student.Department.name
+            </p>
+            <p>
+                GPA  : @ViewBag.gpa
+            </p>
+            <p>
+                gmail : @Model.First().Student.st_email
+            </p>
+
+        </div>
+
+        <div class="bor col-lg-5">
+        </div>
+
+    </div>
 </div>
 
 
+<div class="container">
+    <div class="row">
+        @foreach (var take in @Model)
+        {
+            <div class="org col-lg-4">
+                <div class="column">
+                    <h1 align="center"> @take.Course.cr_title</h1>
+                    <hr />
+                    <p><span style="color: white;font-size: 25px;">+</span><span style="color: brown;font-weight: bold;">Credit Hours : </span> @take.Course.cr_credit_hours </p>
+                    <p>
+                        <span style="color: white;font-size: 25px;">+</span><span style="color: brown;font-weight: bold;">Grade : </span>
+                            @if (take.Gradeid.HasValue)
+                            {
+                                @take.Grade.Latter;
+                            }
+                    </p>
+                    <p><span style="color: white;font-size: 25px;">+</span><span style="color: brown;font-weight: bold;">Instructor : </span> @take.Course.Instructor.ints_fname @take.Course.Instructor.inst_lname</p>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

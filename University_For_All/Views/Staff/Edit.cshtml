@@ -1,0 +1,57 @@
+﻿@using System.Web.UI.WebControls
+@model University_For_All.Models.Instructor
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Home/_HomeLayout2.cshtml";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Save", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-md-10">
+        <div class="image-upload">
+            <label for="file-input">
+                <img id="image_preview" src="@Url.Content(Model.inst_picture)" title="change Image" style="cursor: pointer; width: 100px; height: 100px; border-radius: 50%;" />
+            </label>
+
+            <input id="file-input" name="upload" type="file" onchange="readfile(this)" style="display: none" />
+        </div>
+    </div>
+    @Html.ValidationMessageFor(i => i.inst_picture, "", new { @class = "text-danger" })
+    <div>
+        @Html.LabelFor(i => i.ints_fname)
+        @Html.TextBoxFor(s => s.ints_fname, new { @class = "form-control" })
+
+    </div>
+
+    <div>
+        @Html.LabelFor(s => s.inst_lname)
+        @Html.TextBoxFor(s=>s.inst_lname, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rankid, "RankId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Rankid, new SelectList(ViewBag.ranks, "id","name"), "-- Select Rank --", new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Rankid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @Html.HiddenFor(s=>s.id)
+    @Html.Hidden("from", "Edit")
+    <button type="submit" class="btn btn-primary">Save</button> 
+}
+
+<script type="text/javascript">
+
+    function readfile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

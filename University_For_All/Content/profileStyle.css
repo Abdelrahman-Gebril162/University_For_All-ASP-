@@ -1,0 +1,146 @@
+body{
+    background-color: #34425E;
+    color: whitesmoke;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+   
+
+  }
+  li{
+float: right;
+margin: 10px;
+  }
+
+
+  .left{
+      float: left;
+  }
+  svg{
+      float: right;
+      margin-top: 12px;
+  }
+ .bi-chat-square-text{
+color: white;
+  }
+  .amira{
+      height: 8em;
+      width: 9em;
+      border-radius: 50%;
+      
+  }
+  .red{
+    border-radius: 50%;
+    width: 3em;
+
+
+  }
+  .bor{
+      border-bottom: white 1px solid;
+  }
+h2 .org{
+color: white;
+
+}
+.column{
+    height: 130px;
+    width: 70%;
+    background-color: #FFBE55;
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 0 20px 20px 20px;
+    text-align: center;
+
+ }
+@media(max-width:500px){
+    .column{
+height: 150px;
+text-align: center;
+padding-left: 50px;
+padding-top: 20px;
+
+}
+.org{
+    text-align: center;
+}
+}
+.logo{
+    width: 3em;
+    margin-left: 1em;
+}
+
+.bor {
+    font-size: 14px;
+    line-height: 1px;
+}
+h2  {
+    font-size: 19px;
+    margin-bottom: 18px;
+
+}
+h1{
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+ .column {
+line-height: 5px;
+text-align: left;
+padding-left: 10px;
+color: #000;
+}
+h1{
+    color: whitesmoke;
+}
+.submenu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 11%;
+    background-color: #fff;
+    padding: 10px;
+    -webkit-box-shadow:0 1px 1px #FFBE55 ;
+    -moz-box-shadow:0 1px 1px #FFBE55 ;
+    box-shadow:0 1px 1px #FFBE55 ;
+    text-decoration: none;
+    text-align: center;
+
+
+
+
+
+
+}
+.manu{
+    position: relative; 
+
+
+
+}
+.submenu li{
+    padding: 10px;
+
+}
+.submenu li a {
+    color: #777;
+    text-decoration: none;
+
+}
+
+.submenu li a:hover{
+    color: #FFBE55;
+
+    
+}
+.submenu{
+    display: none;
+}
+.menu:hover .submenu {
+    display: block
+}  
