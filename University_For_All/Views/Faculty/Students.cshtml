@@ -8,12 +8,12 @@
 @{
     var right = true;
     var db = new ApplicationDbContext();
-    var staffFaculty = db.Instructors.SingleOrDefault(i => i.ints_email == User.Identity.Name).Facultyid;
+    var staffFaculty = db.Instructors.SingleOrDefault(i => i.ints_email == User.Identity.Name);
     var studentfaculty = db.Student.SingleOrDefault(i => i.st_email == User.Identity.Name);
     int result = -1;
     if (User.IsInRole("professor"))
     {
-        result = staffFaculty;
+        result = staffFaculty.Facultyid;
     }
     else if (User.IsInRole("student"))
     {
@@ -76,7 +76,7 @@
             {
                 {@Html.ActionLink("More Info", "Details", "Student", new { id = student.id }, new { @class = "btn btn-outline-secondary" })}
             }
-            else if (User.IsInRole("professor") && staffFaculty == student.FacultyId)
+            else if (User.IsInRole("professor") && result == student.FacultyId)
             {
                 {@Html.ActionLink("Report", "Report", "Student", new { id = student.id }, new { @class = "btn btn-outline-secondary" })}
             }
