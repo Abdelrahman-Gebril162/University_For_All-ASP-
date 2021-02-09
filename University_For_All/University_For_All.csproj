@@ -75,14 +75,35 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftReportViewerWebForms_v10.1.0.0\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spark, Version=1.8.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spark.1.8.1.0\lib\NET45\Spark.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spark.Web.Mvc, Version=1.8.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spark.Web.Mvc5.1.8.1.0\lib\NET45\Spark.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,6 +153,10 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -197,9 +222,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SparkWebMvc.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\ChatAppController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
@@ -340,7 +367,13 @@
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Take.cs" />
+    <Compile Include="MyHub1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPTDatasets\StudentDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ContactUsAndStudent.cs" />
     <Compile Include="ViewModels\CreateRoleViewModels.cs" />
@@ -356,9 +389,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ChatApp_Style.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Fstyle.css" />
+    <Content Include="Content\loginStyle.css" />
     <Content Include="Content\profileStyle.css" />
+    <Content Include="Content\SignUpStyle.css" />
     <Content Include="Content\Site%28Image,video%29\Faculty\Image\1.jpg" />
     <Content Include="Content\Site%28Image,video%29\Faculty\Image\2.jpg" />
     <Content Include="Content\Site%28Image,video%29\Faculty\Image\3.jpg" />
@@ -379,6 +415,8 @@
     <Content Include="Content\Site%28Image,video%29\Home\Image\logo2.jpg" />
     <Content Include="Content\Site%28Image,video%29\Home\Image\repsentation.png" />
     <Content Include="Content\Site%28Image,video%29\Home\Video\veideo.mp4" />
+    <Content Include="Content\Site%28Image,video%29\Login\Photo\Background-Illustrator.svg" />
+    <Content Include="Content\Site%28Image,video%29\Login\Photo\University-Logo.svg" />
     <Content Include="Content\style.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="favicon.ico" />
@@ -421,7 +459,19 @@
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="RPTDatasets\StudentDataset.xsc">
+      <DependentUpon>StudentDataset.xsd</DependentUpon>
+    </Content>
+    <None Include="RPTDatasets\StudentDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StudentDataset.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="RPTDatasets\StudentDataset.xss">
+      <DependentUpon>StudentDataset.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\InputAnimationForLogin.js" />
     <Content Include="Scripts\jquery-1.12.1.min.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -430,6 +480,8 @@
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -544,6 +596,10 @@
     <Content Include="Views\Staff\_StaffProfile.cshtml" />
     <Content Include="Views\Shared\_StaffLoginPartial.cshtml" />
     <Content Include="Views\Shared\_LoginAdmin.cshtml" />
+    <Content Include="Views\Shared\_global.spark" />
+    <Content Include="Views\Student\Report.cshtml" />
+    <Content Include="Views\ChatApp\_ChatAppLayout.cshtml" />
+    <Content Include="Views\ChatApp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -642,6 +698,7 @@
     <EmbeddedResource Include="Migrations\202102062249205_imgNullInFaculty.resx">
       <DependentUpon>202102062249205_imgNullInFaculty.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RPTReports\studentReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

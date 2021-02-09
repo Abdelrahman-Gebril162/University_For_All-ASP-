@@ -23,7 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.description)
         </th>
-        <th></th>
+        <th colspan="2" style="text-align: center">Manage Links</th>
     </tr>
     <tbody id="myTable">
     @foreach (var item in Model) {
@@ -40,7 +40,8 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {id = item.id}, new {@class = "btn btn-primary",@style="width:auto;height:auto"})
-                @Html.ActionLink("Details", "Details", new {id = item.id}, new {@class = "btn btn-info"})
+            </td>
+            <td>
                 @Html.ActionLink("Delete", "Delete", new {id = item.id}, new {@class = "btn btn-danger"})
             </td>
         </tr>

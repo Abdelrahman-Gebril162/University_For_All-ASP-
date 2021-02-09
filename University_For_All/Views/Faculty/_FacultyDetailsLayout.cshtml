@@ -11,23 +11,27 @@
 </head>
 <body>
     <!-- Bootstrap core CSS -->
-    
+
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading"><span style="font-size: larger;font-weight: bolder">Welcome Home</span> </div>
             <div class="list-group list-group-flush">
-                @Html.ActionLink("Staff", "Staff", "Faculty", new {id = @ViewBag.id}, new {@class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink("Staff", "Staff", "Faculty", new { id = @ViewBag.id }, new { @class = "list-group-item list-group-item-action bg-light" })
                 @Html.ActionLink("Departments", "Departments", "Faculty", new { id = @ViewBag.id }, new { @class = "list-group-item list-group-item-action bg-light" })
                 @Html.ActionLink("Courses", "Courses", "Faculty", new { id = @ViewBag.id }, new { @class = "list-group-item list-group-item-action bg-light" })
                 @Html.ActionLink("Students", "Students", "Faculty", new { id = @ViewBag.id }, new { @class = "list-group-item list-group-item-action bg-light" })
-                <div class="line-between" style="height: 525px; max-height: 100%; color: black"></div>
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Setting &#9881;
-                </a>
+                @if (User.IsInRole("admin"))
+                {
+                    <div class="line-between" style="height: 395px; max-height: 100%; color: black"></div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Setting &#9881;
+                    </a>
+                }
+                
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Edit</a>
+                    <a class="dropdown-item" href="/Faculty/Edit/@ViewBag.id">Edit</a>
                 </div>
             </div>
         </div>
@@ -45,12 +49,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            @Html.ActionLink("Faculty", "Details", "Faculty", new { id =@ViewBag.id}, new { @class = "nav-link" })
+                            @Html.ActionLink("Faculty", "Details", "Faculty", new { id = @ViewBag.id }, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Faculty">Home</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </nav>
@@ -69,10 +73,10 @@
 
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
 
 

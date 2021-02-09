@@ -25,20 +25,25 @@
         <div class="header">
             <div class="navbar">
 
-                <form class="form-inline my-2 my-lg-0">
+                @*<form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" style="width:400px " type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">&#9906;</button>
-                </form>
+                </form>*@
 
 
                 <div class="nav-links">
                     <ul>
                         <li><a href="/Home"> Home</a> </li>
-                        <li><a href="#"> ChatApp</a> </li>
+                        <li><a href="\ChatApp"> ChatApp</a> </li>
+                    @if (User.IsInRole("admin"))
+                    {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Adminstration ▼
                             </a>
+                            
+
+                            
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/Administration/ListRoles">Roles</a>
                                 <div class="dropdown-divider"></div>
@@ -55,6 +60,7 @@
                                 <a class="dropdown-item" href="/Takes/Index">Enrolement</a>
                             </div>
                         </li>
+                    }
                     </ul>
                 </div>
                 <div class="dropdown">

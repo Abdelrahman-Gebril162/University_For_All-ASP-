@@ -129,6 +129,7 @@ namespace University_For_All.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Course course = db.Courses.Find(id);
+            db.Takes.RemoveRange(db.Takes.Where(t=>t.Courseid==course.id));
             db.Courses.Remove(course);
             db.SaveChanges();
             return RedirectToAction("Index");

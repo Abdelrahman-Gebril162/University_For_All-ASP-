@@ -12,7 +12,7 @@
 
 <div class="container mt-3">
     <h2 align="center">
-        Manegement Section For Students
+        Manegement Section For Faculties
     </h2>
     <input class="form-control" id="myInput" type="text" placeholder="&#x1F50D;Search..">
     <br>
@@ -40,10 +40,12 @@
                 <td>@Convert.ToString(db.Instructors.Count(s=>s.Facultyid==faculty.id))</td>
                 <td>@Convert.ToString(db.Student.Count(s => s.FacultyId == faculty.id))</td>
                 <td>@Convert.ToString(db.Departments.Count(s => s.Facultyid == faculty.id))</td>
+                @if (faculty.fc_name != "master")
+                {
+                    <td><a href="/Faculty/Edit/@faculty.id" class="btn btn-primary"style=" width: auto;height: auto">Edit</a></td>
+                    <td><a href="/Faculty/Delete/@faculty.id" class="btn btn-danger">Delete</a></td>
+                }
                 
-                <td><a href="/Faculty/Edit/@faculty.id" class="btn btn-primary"style=" width: auto;height: auto">Edit</a></td>
-                <td><a href="/Faculty/Delete/@faculty.id" class="btn btn-danger">Delete</a></td>
-                <td><a href="#" class="btn btn-secondary">Report</a></td>
             </tr>
         }
         </tbody>

@@ -1,9 +1,25 @@
-﻿@model IEnumerable<University_For_All.Models.Instructor>
+﻿@using University_For_All.Models
+@model IEnumerable<University_For_All.Models.Instructor>
 @{
     ViewBag.Title = "Faculty-Staff";
     Layout = "~/Views/Faculty/_FacultyDetailsLayout.cshtml";
 }
+@{
+    var right = true;
+    var db = new ApplicationDbContext();
+    var staffFaculty = db.Instructors.SingleOrDefault(i => i.ints_email == User.Identity.Name);
+    var studentfaculty = db.Student.SingleOrDefault(i => i.st_email == User.Identity.Name);
+    int result = -1;
+    if (User.IsInRole("professor"))
+    {
+        result = staffFaculty.id;
+    }
+    else if (User.IsInRole("student"))
+    {
+        result = studentfaculty.id;
+    }
 
+}
 <style>
     .cards {
         display: flex;
@@ -45,14 +61,19 @@
     { 
         <article class="card">
             <img class="img-responsive" src="@Url.Content(@staff.inst_picture)" alt="picture for @staff.inst_lname">
-            <div class="text">
+            <div class="card-body">
                 <h3><b>@string.Join(" ", staff.ints_fname, staff.inst_lname)</b></h3>
                 <h5> @staff.Faculty.fc_name</h5>
-                @if (User.IsInRole("admin"))
-                {
-                    @Html.ActionLink("More Info", "Details", "Staff", new { id = staff.id }, new { @class = "button" })
-                }
+               
             </div>
+            @if (User.IsInRole("admin"))
+            {
+                @Html.ActionLink("More Info", "Details", "Staff", new { id = staff.id }, new { @class = "btn btn-outline-secondary" })
+            }
+            else if (User.IsInRole("professor") && staff.id == result)
+            {
+                @Html.ActionLink("More Info", "Details", "Staff", new { id = staff.id }, new { @class = "btn btn-outline-secondary" })
+            }
         </article>
     }
 </main>

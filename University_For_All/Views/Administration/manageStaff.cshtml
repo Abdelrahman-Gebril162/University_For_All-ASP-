@@ -19,7 +19,7 @@
             <th>Faculty</th>
             <th>Rank</th>
             <th>Photo</th>
-            <th colspan="3" style="text-align: center">Manage Links</th>
+            <th  colspan="2"> Manage Links</th>
         </tr>
         </thead>
         <tbody id="myTable">
@@ -33,10 +33,12 @@
                 <td>
                     <img src="@Url.Content(instructor.inst_picture)" style="width: 30px; height: 30px; border-radius: 50%;" />
                 </td>
-                <td><a href="/Staff/Edit/@instructor.id" class="btn btn-primary" style=" width: auto;height: auto">Edit</a></td>
-                <td><a href="/Staff/Delete/@instructor.id" class="btn btn-danger">Delete</a></td>
-                <td><a href="#" class="btn btn-secondary">Report</a></td>
-
+                @if (instructor.ints_email != "admin@gmail.com")
+                {
+                    <td><a href="/Staff/Edit/@instructor.id" class="btn btn-primary" style=" width: auto;height: auto">Edit</a></td>
+                    <td><a href="/Staff/Delete/@instructor.id" class="btn btn-danger">Delete</a></td>
+                }
+                
             </tr>
         }
         </tbody>

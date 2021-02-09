@@ -17,12 +17,18 @@ namespace University_For_All.Controllers
     {
         static ApplicationDbContext db = new ApplicationDbContext();
         UserManager<ApplicationUser> UserManeger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+        private readonly RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
         //View Form For Adding new student
         [HttpGet]
         public ActionResult New()
         {
             var faculties = db.Faculty.ToList();
             var rank = db.Ranks.ToList();
+            var staffRoleCheck = roleManager.FindByName("professor");
+            if (staffRoleCheck ==null)
+            {
+                return Content("Role professor doesn't Exist Right Now;");
+            }
             if (faculties.Count == 0)
             {
                 return Content("Please add Faculty");
@@ -73,7 +79,14 @@ namespace University_For_All.Controllers
         {
             var staffDetails = db.Instructors.Include(t => t.Faculty).Include(t => t.Rank)
                 .SingleOrDefault(t => t.id == id);
-            @ViewBag.courses = db.Courses.Where(c => c.Instructorid == staffDetails.id).ToList();
+            if (db.Courses.Where(c => c.Instructorid == staffDetails.id).ToList().Count==0)
+            {
+                @ViewBag.courses = 0;
+            }
+            else
+            {
+                @ViewBag.courses = db.Courses.Where(c => c.Instructorid == staffDetails.id).ToList();
+            }
             return View(staffDetails);
         }
         [HttpGet]

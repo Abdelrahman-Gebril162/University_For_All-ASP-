@@ -3,58 +3,60 @@
 @{
     ViewBag.Title = "Log in";
 }
+<link href="~/Content/loginStyle.css" rel="stylesheet" />
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
+<div style="height: 100%; width: 100%; display: flex; align-items: center;">
+    <a href="/Home">
+        <img style="z-index: 10;position: absolute; top: 20px; right: 50px; height: 140px; width: 140px" src="~/Content/Site(Image,video)/Login/Photo/University-Logo.svg" />
+    </a>
+        <div style="position: absolute; top: 47%; right: 20px; transform: translateY(-50%); height: 600px; width: 600px;">
+            <img style="height: 100%; width: 100%" src="~/Content/Site(Image,video)/Login/Photo/Background-Illustrator.svg" />
+        </div>
+
+        <div style="height: 100%; width: 394px; background-color: #FFBE55;"></div>
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-container", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", style = "font-size:5px" })
+            <div>
+                <p style="font: normal normal normal 28px/28px Arial; color: #F2F5FA; text-align: center; margin-bottom: 40px;">Sign In</p>
+                <div class="input-container">
+                    <label>Email</label>
+                </div><br />
+                <div class="input-container">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "color:red;font-size:15px" })
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
+                <div class="input-container">
+                    <label>Password</label>
+                </div><br />
+                <div class="input-container">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger", style = "color:red;font-size:15px" })
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
-                    </div>
+                <p style="font: normal normal normal 15px/15px Arial; color: #F2F5FA; text-align: center; margin-bottom: 10px;">Only &#x21E9; Can Access</p>
+
+                <div style="padding: 0 40px; display: flex; justify-content: space-between; margin-bottom: 10px">
+                    <label class="pure-material-checkbox">
+                        <input type="checkbox" disabled checked>
+                        <span><text style="color: #f2f5fa; font-weight: bolder">Student</text></span>
+                    </label>
+
+                    <label class="pure-material-checkbox">
+                        <input type="checkbox" disabled checked>
+                        <span><text style="color: #f2f5fa; font-weight: bolder">Professor</text></span>
+                    </label>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
+
+                <Button type="submit" class="signin-button" style="cursor: pointer">
+                    Sign In
+                </Button>
+                <p class="notification-message">Wish You Enjoy Visiting Our WebSite &#x1F498; Have A Nice Time </p>
+            </div>
+        }
 </div>
 
+<script src="~/Scripts/InputAnimationForLogin.js"></script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

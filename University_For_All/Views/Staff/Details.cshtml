@@ -8,6 +8,10 @@
 <style>
     div p {
         line-height: 20px;
+        
+    }
+    .change figcaption:hover {
+        color: white;
     }
 </style>
 <div class="container">
@@ -15,7 +19,7 @@
     <div class="col-lg-2 " style="text-align: center;">
         <img src="@Url.Content(Model.inst_picture)" class="amira">
 
-        <a> <figcaption class="figure-caption">edit photo</figcaption></a>
+        <a href="/Staff/Edit/@Model.id" class="change"> <figcaption class="figure-caption">edit photo</figcaption></a>
 
     </div>
     <div class="bor col-lg-5 ">
@@ -44,20 +48,30 @@
 </div>
     
 <div class="container">
-    <h1 align="center">I am Teaching</h1>
-    <div class="row">
+    @if (ViewBag.courses == 0)
+    {
+        <div class="container">
+            <text style="font-size: 6vw; font-weight: bolder; color: white;text-align:center"> I'm Not Teaching Any Course For Now  	&#9749;</text>
+        </div>
+    }
+    else
+    {
+        <h1 align="center">I am Teaching</h1>
+        <div class="row">
 
-        @foreach (var take in @ViewBag.courses)
-        {
+            @foreach (var take in @ViewBag.courses)
+            {
 
-            <div class="org col-lg-4">
-                <div class="column">
-                    <h1 align="center"> @take.cr_title</h1>
-                    <hr/>
-                    <p><span style="color: white; font-size: 25px;">+</span><span style="color: brown; font-weight: bold;">Credit Hours : </span> @take.cr_credit_hours </p>
+                <div class="org col-lg-4">
+                    <div class="column">
+                        <h1 align="center"> @take.cr_title</h1>
+                        <hr/>
+                        <p><span style="color: white; font-size: 25px;">+</span><span style="color: brown; font-weight: bold;">Credit Hours : </span> @take.cr_credit_hours </p>
+                    </div>
                 </div>
-            </div>
-        }
+            }
 
-    </div>
+        </div>
+    }
+    
 </div>

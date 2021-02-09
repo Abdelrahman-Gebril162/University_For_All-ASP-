@@ -1,10 +1,26 @@
-﻿@model IEnumerable<University_For_All.Models.Student>
+﻿@using University_For_All.Models
+@model IEnumerable<University_For_All.Models.Student>
 
 @{
     ViewBag.Title = "Faculty-Students";
     Layout = "~/Views/Faculty/_FacultyDetailsLayout.cshtml";
 }
+@{
+    var right = true;
+    var db = new ApplicationDbContext();
+    var staffFaculty = db.Instructors.SingleOrDefault(i => i.ints_email == User.Identity.Name).Facultyid;
+    var studentfaculty = db.Student.SingleOrDefault(i => i.st_email == User.Identity.Name);
+    int result = -1;
+    if (User.IsInRole("professor"))
+    {
+        result = staffFaculty;
+    }
+    else if (User.IsInRole("student"))
+    {
+        result = studentfaculty.id;
+    }
 
+}
 <style>
     .cards {
         display: flex;
@@ -46,12 +62,24 @@
 
         <article class="card">
             <img class="img-responsive" src="@Url.Content(student.st_picture)" alt="picture for @student.st_fname">
-            <div class="text">
+            <div class="card-body">
                 <h3><b>@string.Join(" ", student.st_fname, student.st_lname)</b></h3>
                 <h5> @student.Faculty.fc_name</h5>
-                @if(User.IsInRole("professor"))
-                    {@Html.ActionLink("More Info", "Details", "Student", new { id = student.id }, new { @class = "button" })}
+               
             </div>
+            @if (User.IsInRole("admin"))
+            {
+                {@Html.ActionLink("More Info", "Details", "Student", new { id = student.id }, new { @class = "btn btn-outline-secondary" })}
+
+            }
+            else if (User.IsInRole("student") && student.id == result)
+            {
+                {@Html.ActionLink("More Info", "Details", "Student", new { id = student.id }, new { @class = "btn btn-outline-secondary" })}
+            }
+            else if (User.IsInRole("professor") && staffFaculty == student.FacultyId)
+            {
+                {@Html.ActionLink("Report", "Report", "Student", new { id = student.id }, new { @class = "btn btn-outline-secondary" })}
+            }
         </article>
 
     }

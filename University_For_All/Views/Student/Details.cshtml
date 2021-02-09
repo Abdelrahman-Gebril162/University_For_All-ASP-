@@ -9,13 +9,17 @@
 }
 
 <style>
+    .change figcaption:hover {
+        color: white;
+    }
+     
 </style>
 <div class="container">
     <div class="row">
         <div class="col-lg-2 " style="text-align: center;">
             <img src="@Url.Content(Model.First().Student.st_picture)" class="amira">
 
-            <a> <figcaption class="figure-caption">edit photo</figcaption></a>
+            <a href="/Student/Edit/@Model.First().Studentid" class="change"> <figcaption class="figure-caption">edit photo</figcaption></a>
 
         </div>
         <div class=" bor col-lg-5 ">

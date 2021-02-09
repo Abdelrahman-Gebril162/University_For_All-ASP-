@@ -5,146 +5,184 @@
 @{
     ViewBag.Title = "New Student";
     Layout = "~/Views/Home/_HomeLayout2.cshtml";
+
 }
+<style>
+    .row {
+        height: auto;
+    }
+    .btn-sm {
+        margin-top:10px;
+        margin-left: 261px;
+       
+        
+    }
+</style>
+<link href="~/Content/SignUpStyle.css" rel="stylesheet" />
 
-<h2>Add New Student</h2>
 
-@using (Html.BeginForm("New", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3  " style="text-align: center;"></div>
+        <div class=" col-lg-6" id="txt" style="text-align: center; ">Add NEW Student</div>
+        <div class="col-lg-3 " id="log" style="text-align: right;">
+        </div>
+    </div></div>
+
+@using (Html.BeginForm("New", "Student", FormMethod.Post, new {enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Student.st_picture, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="image-upload">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
                 <label for="file-input">
-                    <img id="image_preview" src="~/images/male-student-icon-png_251938.jpg" style="cursor: pointer; width: 100px; height: 100px; border-radius: 50%;" />
+                    <img id="image_preview" src="~/Upload/defaultImage/male-student-icon-png_251938.jpg"style="cursor: pointer; width: 25vw; height: 35vh; border-radius: 50%;"/>
                 </label>
-
-                <input id="file-input" name="upload" type="file" onchange="readfile(this)" style="display: none" />
+                <input id="file-input" name="upload" type="file" onchange="readfile(this)" style="display: none"/>
             </div>
-            @Html.ValidationMessageFor(model => model.Student.st_picture, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Student.st_picture, "", new {@class = "text-danger"})
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_fname, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_fname, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_fname, "", new { @class = "text-danger" })
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-3 " style="text-align: center;">
+                @Html.TextBoxFor(model => model.Student.st_fname, new {@placeholder = "First Name"})
+                @Html.ValidationMessageFor(model => model.Student.st_fname, "", new {@class = "text-danger"})
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_lname, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_lname, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_lname, "", new { @class = "text-danger" })
+            <div class="col-lg-3 " style="text-align: center;">
+                @Html.TextBoxFor(model => model.Student.st_lname, new {@placeholder = "Last Name"})
+                @Html.ValidationMessageFor(model => model.Student.st_lname, "", new {@class = "text-danger"})
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_DateOfBirth, "", new { @class = "text-danger" })
+            <div class="col-lg-3 " style="text-align: center;"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.EditorFor(model => model.Student.st_DateOfBirth, new {htmlAttributes = new {@class = "form-control", placeholder = "Birthday "}})
+                @Html.ValidationMessageFor(model => model.Student.st_DateOfBirth, "", new {@class = "text-danger"})
             </div>
+            <div class="col-lg-3 " style="text-align: center;"></div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_address, "", new { @class = "text-danger" })
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.TextBoxFor(model => model.Student.st_address, new {@placeholder = "Your Address"})
+                @Html.ValidationMessageFor(model => model.Student.st_address, "", new {@class = "text-danger"})
             </div>
+            <div class="col-lg-3 " style="text-align: center;"></div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_city, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_city, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_city, "", new { @class = "text-danger" })
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.TextBoxFor(model => model.Student.st_city, new {@placeholder = "Your City"})
+                @Html.ValidationMessageFor(model => model.Student.st_city, "", new {@class = "text-danger"})
             </div>
+            <div class="col-lg-3 " style="text-align: center;"></div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_phone, "", new { @class = "text-danger" })
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.TextBoxFor(model => model.Student.st_phone, new {@placeholder = "Phone Number"})
+                @Html.ValidationMessageFor(model => model.Student.st_phone, "", new {@class = "text-danger"})
             </div>
+            <div class="col-lg-3 " style="text-align: center;"></div>
         </div>
-
-        <div class="form-group ">
-            @Html.LabelFor(model => model.Student.st_email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_email, "", new { @class = "text-danger" })
-                <h4>@ViewBag.message</h4>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.TextBoxFor(model => model.Student.st_email, new {@placeholder = "(Google) E-mail"})
+                @Html.ValidationMessageFor(model => model.Student.st_email, "", new {@class = "text-danger"})
             </div>
+            <div class="col-lg-3 " style="text-align: center;"></div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.Student.st_password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Student.st_password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_confirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.Student.st_confirmPassword, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Student.st_confirmPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.st_level, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Student.st_level, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Student.st_level, "", new { @class = "text-danger" })
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 " style="text-align: center;"></div>
+                <div class="col-lg-6 " style="text-align: center;">
+                    @Html.PasswordFor(model => model.Student.st_password, new {placeholder = "Password"})
+                    @Html.ValidationMessageFor(model => model.Student.st_password, "", new {@class = "text-danger"})
+                </div>
+                <div class="col-lg-3 " style="text-align: center;"></div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 " style="text-align: center;"></div>
+                <div class="col-lg-6 " style="text-align: center;">
+                    @Html.PasswordFor(model => model.Student.st_confirmPassword, new {placeholder = "Confirm Password"})
+                    @Html.ValidationMessageFor(model => model.Student.st_confirmPassword, "", new {@class = "text-danger"})
+                </div>
+                <div class="col-lg-3 " style="text-align: center;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <label style="font-weight: bold; color: white; text-align: center"> --Select Your Level</label><br/>
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.EditorFor(model => model.Student.st_level, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Student.st_level, "", new {@class = "text-danger"})
+            </div>
+            <div class="col-lg-3 " style="text-align: center;"></div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.Undergrad, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <span style="font-weight: bold; color: white; text-align: center">Undergraduate Or Not </span>
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Student.Undergrad)
-                    @Html.ValidationMessageFor(model => model.Student.Undergrad, "", new { @class = "text-danger" })
+                <div class="col-lg-3 " style="text-align: center;"></div>
+                <div class="col-lg-6" style="text-align: center;">
+                    @Html.CheckBoxFor(model => model.Student.Undergrad, new {@class = "form-check-input", style = "margin-left:320px"})
+                    @Html.ValidationMessageFor(model => model.Student.Undergrad, "", new {@class = "text-danger"})
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.FacultyId, "FacultyId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(m=>m.Student.FacultyId,ViewBag.Faculty as SelectList,"-- Select Faculty --",new {@class="form-control",onchange="read()"})
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.DropDownListFor(m => m.Student.FacultyId, ViewBag.Faculty as SelectList, "-- Select Faculty --", new {@class = "form-control", onchange = "read()"})
                 @Html.ValidationMessageFor(model => model.Student.FacultyId, "", new {@class = "text-danger"})
             </div>
-        </div>
+            <div class="col-lg-3 " style="text-align: center;"></div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Student.DepartmentId, "DepartmentId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                
-                @Html.DropDownListFor(m => m.Student.DepartmentId, new SelectList(" "), "-- Select Department --", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 " style="text-align: center;"></div>
+            <div class="col-lg-6 " style="text-align: center;">
+                @Html.DropDownListFor(m => m.Student.DepartmentId, new SelectList(" "), "-- Select Department --", new {@class = "form-control"})
                 @Html.ValidationMessageFor(model => model.Student.DepartmentId, "", new {@class = "text-danger"})
             </div>
         </div>
-       
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-outline-success" />
-            </div>
-        </div>
     </div>
-}
+    <div class="container">
+        <button type="submit" class="btn btn-secondary" style="margin: auto; width: 25vw; height: auto;display: block;">Send</button>
+    </div>
+
+}        
 
 <script type="text/javascript">
 
