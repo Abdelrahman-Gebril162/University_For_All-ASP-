@@ -33,8 +33,12 @@
                 <td>
                     <img src="@Url.Content(instructor.inst_picture)" style="width: 30px; height: 30px; border-radius: 50%;" />
                 </td>
-                <td><a href="/Staff/Edit/@instructor.id" class="btn btn-primary" style=" width: auto;height: auto">Edit</a></td>
-                <td><a href="/Staff/Delete/@instructor.id" class="btn btn-danger">Delete</a></td>
+                @if (instructor.ints_email != "admin@gmail.com")
+                {
+                    <td><a href="/Staff/Edit/@instructor.id" class="btn btn-primary" style=" width: auto;height: auto">Edit</a></td>
+                    <td><a href="/Staff/Delete/@instructor.id" class="btn btn-danger">Delete</a></td>
+                }
+                
             </tr>
         }
         </tbody>

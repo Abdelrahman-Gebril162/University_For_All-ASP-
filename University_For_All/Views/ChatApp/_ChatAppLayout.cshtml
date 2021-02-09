@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Content/ChatApp_Style.css" rel="stylesheet"/>
+    @Styles.Render("~/home/css")
+
+    <title>Home</title>
+    <style>
+        .dropdown:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown>.dropdown-toggle:active {
+            /*Without this, clicking will make it sticky
+        // pointer-events: none;*/
+        }
+        .header{
+            background-color: #34425E;
+            
+        }
+        .lets-learn .header .navbar .nav-links li a {
+            color: gray
+        }
+        .row {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <section class="lets-learn">
+        <div class="header">
+            <div class="navbar">
+                <div>
+                    <a href="/home"><img src="~/Content/Site(Image,video)/Login/Photo/University-Logo.svg" style="width: 100px" class="img-responsive" alt=""></a>
+                </div>
+
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="\Home">Home</a></li>
+                        <li><a href="\Faculty">Faculties</a></li>
+                        <li><a href="\ChatApp">ChatApp</a></li>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Adminstration ▼
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/Administration/ListRoles">Roles</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Administration/manageStudent">Student</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Administration/manageStaff">Staff</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Administration/manageFaculty">Faculties</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Departments/Index">Departments</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Courses/Index">Courses</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Takes/Index">Enrolement</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+                <div class="dropdown">
+                    @if (User.IsInRole("professor") | User.IsInRole("admin"))
+                    {
+                        @Html.Partial("_StaffLoginPartial")
+                    }
+                    else if (User.IsInRole("student"))
+                    {
+                        @Html.Partial("_LoginPartial")
+                    }
+                    else
+                    {
+                        @Html.Partial("_LoginPartial")
+                    }
+                </div>
+            </div>
+
+        </div>
+    </section>
+   
+@RenderBody()
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+</body>
+</html>

@@ -226,6 +226,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\ChatAppController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
@@ -366,6 +367,7 @@
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Take.cs" />
+    <Compile Include="MyHub1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RPTDatasets\StudentDataset.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -387,6 +389,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ChatApp_Style.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Fstyle.css" />
     <Content Include="Content\loginStyle.css" />
@@ -595,6 +598,8 @@
     <Content Include="Views\Shared\_LoginAdmin.cshtml" />
     <Content Include="Views\Shared\_global.spark" />
     <Content Include="Views\Student\Report.cshtml" />
+    <Content Include="Views\ChatApp\_ChatAppLayout.cshtml" />
+    <Content Include="Views\ChatApp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
