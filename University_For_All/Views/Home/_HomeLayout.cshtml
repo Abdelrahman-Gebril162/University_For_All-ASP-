@@ -45,26 +45,30 @@
                     <li><a href="#">ChatApp</a></li>
                     <li> <a href="#about">About us</a></li>
                     <li><a href="#contact">Contact us </a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Adminstration ▼
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/Administration/ListRoles">Roles</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Administration/manageStudent">Student</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Administration/manageStaff">Staff</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Administration/manageFaculty">Faculties</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Departments/Index">Departments</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Courses/Index">Courses</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Takes/Index">Enrolement</a>
-                        </div>
-                    </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Adminstration ▼
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Administration/ListRoles">Roles</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Administration/manageStudent">Student</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Administration/manageStaff">Staff</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Administration/manageFaculty">Faculties</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Departments/Index">Departments</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Courses/Index">Courses</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Takes/Index">Enrolement</a>
+                            </div>
+                        </li>
+                    }
+                    
                 </ul>
 
             </div>

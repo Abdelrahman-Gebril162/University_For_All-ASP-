@@ -129,7 +129,7 @@ namespace University_For_All.Controllers
         }
         public ActionResult Courses(int id)
         {
-            var course = db.Courses.Include(s => s.Faculty).Where(I => I.Facultyid == id).ToList();
+            var course = db.Courses.Include(s => s.Faculty).Include(s=>s.Instructor).Where(I => I.Facultyid == id).ToList();
             ViewBag.id = id;
             return View(course);
         }

@@ -1,0 +1,108 @@
+body{
+    background: #34425E 0% 0% no-repeat padding-box;
+}
+.amira{
+    height: 8em;
+    width: 9em;
+    border-radius: 50%;
+    
+}
+div{
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+#txt{
+padding-top: 20px;
+ text-align: center;
+    font: normal normal normal 40px Arial;
+    letter-spacing: 2.88px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+.figure-caption{
+    font: normal normal normal 25px/40px Arial;
+    letter-spacing: 1.46px;
+    color: #FFFFFF;
+    opacity: 0.7;
+}
+input[type=text] , input[type=password] ,input[type=date]{
+    background-color:   #34425E ;
+
+    width: 100%;
+    outline: 0;
+    padding-top: 1em;
+    border-width: 0 0 1px ;
+    border-color: #FFFFFF;
+    margin-bottom: 1em;
+    text-align: left;
+font: normal normal normal 30px/35px Arial;
+letter-spacing: 1.54px;
+color: #FFFFFF;
+opacity: 0.63;
+  }
+  #select{
+    background-color:   #34425E ;
+
+    width: 100%;
+    outline: 0;
+    padding-top: 1em;
+    border-width: 0 0 1px ;
+    border-color: #FFFFFF;
+    margin-bottom: 1em;
+    text-align: left;
+font: normal normal normal 30px/35px Arial;
+letter-spacing: 1.54px;
+color: #FFFFFF;
+opacity: 0.63;
+  }
+  .btn{
+    background: #FFFFFF 0% 0% ;
+    border: 1px solid #707070;
+    width: 465px;
+height: 104px;
+
+    border-radius: 92px;
+    opacity: 1;
+    width: 50%;
+height: 100%;
+font: normal normal bold 40px/60px Arial;
+letter-spacing: 1.54px;
+color: #34425E;
+opacity: 1;
+
+  }
+  .logo{
+      width: 30%;
+  }
+  @media(max-width:500px){
+    #txt{
+        padding-left: 75px;
+        padding-top: 20px;
+            font: normal normal normal 20px Arial;
+            letter-spacing: 2.5px;
+            color: #FFFFFF;
+            opacity: 1;
+            width: 80%;
+        }
+        .logo{
+            
+            width: 100%;
+     
+        }
+        #log{
+            text-align: center;
+            width: 18%;
+        }
+        .amira{
+            height: 10em;
+            width: 11em;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            
+        }
+        .btn{
+            background: #FFFFFF 0% 0% ;
+            border: 1px solid #707070;
+            width: 300px;
+        height: 70px;}
+  }

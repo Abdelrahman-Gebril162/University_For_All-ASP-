@@ -16,6 +16,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Reporting.WebForms;
 
 namespace University_For_All.Controllers
 {
@@ -23,6 +24,7 @@ namespace University_For_All.Controllers
     {
         static ApplicationDbContext db = new ApplicationDbContext();
         UserManager<ApplicationUser> UserManeger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+        private readonly RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
         [HttpGet]
         public ActionResult Index()
         {
@@ -35,6 +37,11 @@ namespace University_For_All.Controllers
         {
             var departments = db.Departments.ToList();
             var faculties = db.Faculty.ToList();
+            var studentRoleCheck = roleManager.FindByName("student");
+            if (studentRoleCheck == null)
+            {
+                return Content("Student Role doesn't Exist Right Now");
+            }
             if (faculties.Count==0 | departments.Count==0)
             {
                 return Content("Please add Faculty And Department first");
@@ -201,6 +208,27 @@ namespace University_For_All.Controllers
             db.Student.Remove(db.Student.Single(s => s.id ==editedstudent.id));
             db.SaveChanges();
             return RedirectToAction("Index","Home");
+        }
+        public ActionResult Report(int id)
+        {
+            var student = db.Student.SingleOrDefault(st => st.id == id);
+            LocalReport localReport =new LocalReport();
+            string p = Path.Combine(Server.MapPath("~/RPTReports"), "studentReport.rdlc");
+            localReport.ReportPath = p;
+
+            List<Student> students =new List<Student>();
+            students.Add(student);
+
+            ReportDataSource reportDataSource = new ReportDataSource("StudentDataset",students);
+            localReport.DataSources.Add(reportDataSource);
+            localReport.ReportEmbeddedResource = student.st_picture;
+            string mt, enc, f;
+            string[] s;
+            Warning[] w;
+
+            byte[] b = localReport.Render("PDF", null, out mt, out enc, out f, out s, out w);
+
+            return File(b, mt);
         }
         private IAuthenticationManager AuthenticationManager
         {

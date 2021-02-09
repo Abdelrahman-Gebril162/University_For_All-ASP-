@@ -45,11 +45,18 @@
     @foreach(var course in Model)
     { 
         <article class="card">
-            <h1>@course.cr_title</h1>
-            <div class="text">
-                @course.cr_credit_hours
-                @Html.ActionLink("More Info", "Details", "Student", new {id = course.id}, new {@class = "button"})
+            <h1 align="center">@course.cr_title</h1>
+            <div class="card-body">
+                Credit Hours: @course.cr_credit_hours <br/>
+                Studey In Level : @course.cr_level
+                Instructor Name : @string.Concat(course.Instructor.ints_fname," ",course.Instructor.inst_lname)<br/>
+
+                
             </div>
+            @if (User.IsInRole("admin"))
+            {
+                @Html.ActionLink("More Info", "Details", "Courses", new { id = course.id }, new { @class = " btn btn-outline-secondary" })
+            }
         </article>
     }
 </main>

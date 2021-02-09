@@ -1,0 +1,110 @@
+﻿@model IEnumerable<University_For_All.Models.Student>
+
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Report</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Faculty.fc_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_confirmPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Undergrad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.enroll_date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty.fc_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_lname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_confirmPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_picture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Undergrad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.enroll_date)
+        </td>
+    </tr>
+}
+
+</table>

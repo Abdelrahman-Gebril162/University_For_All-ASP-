@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using University_For_All.Models;
 using University_For_All.ViewModels;
 using System.Data.Entity;
+using Microsoft.Owin.Security;
 
 namespace University_For_All.Controllers
 {
@@ -40,7 +41,7 @@ namespace University_For_All.Controllers
                     return RedirectToAction("ListRoles", "Administration");
                 }
             }
-            
+            Logout();
             return View(model);
         }
         [HttpGet]
@@ -90,6 +91,7 @@ namespace University_For_All.Controllers
                     return RedirectToAction("ListRoles");
                 }
             }
+            Logout();
             return View(EditRole);
         }
         [HttpPost]
@@ -108,6 +110,7 @@ namespace University_For_All.Controllers
                     return RedirectToAction("ListRoles");
                 }
             }
+            Logout();
             return View("ListRoles");
         }
         [HttpGet]
@@ -181,6 +184,8 @@ namespace University_For_All.Controllers
                         return RedirectToAction("Edit", new { id = roleId });
                 }
             }
+
+            Logout();
             return RedirectToAction("Edit", new { id = roleId });
         }
 
@@ -198,6 +203,18 @@ namespace University_For_All.Controllers
         {
             var Faculty = db.Faculty.ToList();
             return View(Faculty);
+        }
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("login", "Account");
         }
     }
 }

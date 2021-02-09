@@ -45,11 +45,16 @@
     @foreach(var department in Model)
     { 
         <article class="card">
-            <h1>@department.name</h1>
-            <div class="text">
+            <h1 align="center">@department.name</h1>
+            <hr/>
+            <div class="card-body">
                 @department.description
-                @Html.ActionLink("More Info", "Details", "Student", new {id = department.id}, new {@class = "button"})
             </div>
+            @if (User.IsInRole("admin"))
+            {
+                @Html.ActionLink("More Info", "Details", "Departments", new { id = department.id }, new { @class = "btn btn-outline-secondary" })
+
+            }
         </article>
     }
 </main>
