@@ -81,7 +81,7 @@ namespace University_For_All.Controllers
                 .SingleOrDefault(t => t.id == id);
             if (db.Courses.Where(c => c.Instructorid == staffDetails.id).ToList().Count==0)
             {
-                @ViewBag.courses = 0;
+                @ViewBag.emptyCourse = "0";
             }
             else
             {

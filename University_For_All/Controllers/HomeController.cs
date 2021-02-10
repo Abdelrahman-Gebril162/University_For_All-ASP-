@@ -31,7 +31,23 @@ namespace University_For_All.Controllers
         [HttpPost]
         public ActionResult Contacts(ContactUs contactUs)
         {
+            var result = true;
             if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var client = new WebClient())
+                    using (client.OpenRead("http://google.com/generate_204"))
+                        result = false;
+                }
+                catch
+                {
+                    ViewBag.error = "check Internet Connection";
+                }
+
+                
+            }
+            if (!result)
             {
                 var mail = new MailMessage();
                 var loginInfo = new NetworkCredential("abdo.gebril2000@gmail.com", "abdo162giprelwork");
@@ -45,9 +61,9 @@ namespace University_For_All.Controllers
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = loginInfo;
                 smtpClient.Send(mail);
+                ViewBag.error = "";
                 return RedirectToAction("Index", "Faculty");
             }
-            
             return View("Index");
         }
     }

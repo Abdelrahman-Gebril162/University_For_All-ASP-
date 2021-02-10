@@ -98,6 +98,10 @@
                         <p>Welcome To</p>
                         <p>The Future</p>
                     </div>
+                    @if (ViewBag.error == "check Internet Connection")
+                    {
+                        <span class="text-danger" style="font-weight: bold; font-size: xx-large; border: 2px double gray;border-radius: 16%" > @ViewBag.error</span>
+                    }
                 </div>
                 <div class="col-md-5">
                     <img src="~/Content/Site(Image,video)/Home/Image/repsentation.png" alt="">
