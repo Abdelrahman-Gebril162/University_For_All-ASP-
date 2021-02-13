@@ -50,9 +50,9 @@ namespace University_For_All.Controllers
             if (!result)
             {
                 var mail = new MailMessage();
-                var loginInfo = new NetworkCredential("abdo.gebril2000@gmail.com", "abdo162giprelwork");
+                var loginInfo = new NetworkCredential("your email", "password for your email");
                 mail.From = new MailAddress(contactUs.Email);
-                mail.To.Add(new MailAddress("abdo.gebril2000@gmail.com"));
+                mail.To.Add(new MailAddress("receiver email"));
                 mail.Body = "sender Email : " + contactUs.Email + "\n" +
                             "sender Message : " + contactUs.Message;
                 var smtpClient = new SmtpClient("smtp.gmail.com", 587);
