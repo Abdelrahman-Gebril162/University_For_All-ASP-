@@ -7,9 +7,9 @@ his/her grades  for The length of the study period. just visit and see more feat
 2. Setup Sql Server2014 (developer edition) or above, so you can see the database created by the project.
 4. open services.  
    3.1. Right-click on windows icon.
-   3.2. Select Run.
-   3.3. Type services.msc in the Run box which opens.
-   3.4. Windows Services Manager will open.
+   5.2. Select Run.
+   6.3. Type services.msc in the Run box which opens.
+   7.4. Windows Services Manager will open.
 5. start Sql services from services "SQL Server (MSSQLSERVER) , SQL Server Agent (MSSQLSERVER) , SQL Server VSS Writer" => Now Your server is opend.
 6. clone the project in your pc '>>git clone https://github.com/abdo-giprel/University_For_All.git'.   
 7. open nuget package console => click on restor button =>then, type (update-database).
