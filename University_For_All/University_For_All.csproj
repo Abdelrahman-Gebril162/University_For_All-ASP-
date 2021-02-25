@@ -270,10 +270,6 @@
     <Compile Include="Migrations\202012182333463_addAnnotationToGrade.Designer.cs">
       <DependentUpon>202012182333463_addAnnotationToGrade.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012190025443_addDataToGradeLatter.cs" />
-    <Compile Include="Migrations\202012190025443_addDataToGradeLatter.Designer.cs">
-      <DependentUpon>202012190025443_addDataToGradeLatter.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202012190032004_addAnnotationToGradeLatter.cs" />
     <Compile Include="Migrations\202012190032004_addAnnotationToGradeLatter.Designer.cs">
       <DependentUpon>202012190032004_addAnnotationToGradeLatter.cs</DependentUpon>
@@ -712,9 +708,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012182333463_addAnnotationToGrade.resx">
       <DependentUpon>202012182333463_addAnnotationToGrade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012190025443_addDataToGradeLatter.resx">
-      <DependentUpon>202012190025443_addDataToGradeLatter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012190032004_addAnnotationToGradeLatter.resx">
       <DependentUpon>202012190032004_addAnnotationToGradeLatter.cs</DependentUpon>
