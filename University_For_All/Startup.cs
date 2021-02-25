@@ -35,8 +35,11 @@ namespace University_For_All
                 fc_logo = "~/Upload/defaultImage/Faculty_default.png",
                 fc_spicial_year = 2
             };
-            db.Faculty.Add(f);
-            db.SaveChanges();
+            if (db.Faculty.SingleOrDefault(fc=>fc.fc_name=="Master")==null)
+            {
+                db.Faculty.Add(f);
+                db.SaveChanges();
+            }
             if (db.Instructors.SingleOrDefault(i=>i.ints_email== "admin@gmail.com") ==null)
             {
                 Instructor instructor = new Instructor()
