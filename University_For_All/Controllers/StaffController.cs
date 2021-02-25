@@ -58,6 +58,11 @@ namespace University_For_All.Controllers
                 if (userWithSameEmail == null)
                 {
                     Instructor.inst_picture = upload == null ? "~/Upload/defaultImage/staff.png" : "~/Upload/InstruactorImage/" + upload.FileName;
+                    if (upload==null)
+                    {
+                        System.IO.File.Copy(Server.MapPath("~/Upload/defaultImage/staff.png"), Server.MapPath("~/Upload/InstruactorImage/staff.png"), true);
+
+                    }
                     db.Instructors.Add(Instructor);
                     db.SaveChanges();
                     ApplicationUser newUser = new ApplicationUser()
@@ -141,11 +146,11 @@ namespace University_For_All.Controllers
                 editedStaff.ints_fname = instructor.ints_fname;
                 editedStaff.ints_fname = instructor.ints_fname;
                 editedStaff.Rankid = instructor.Rankid;
-                var oldImg = editedStaff.inst_picture.Substring(22);
+                var oldImg = editedStaff.inst_picture.Substring(25);
 
                 if (upload != null)
                 {
-                    System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\InstruactorImage\" + oldImg);
+                    System.IO.File.Delete(Server.MapPath("~/Upload/InstruactorImage/" + oldImg));
                     var path = Path.Combine(Server.MapPath("~/Upload/InstruactorImage"), upload.FileName);
                     upload.SaveAs(path);
                     editedStaff.inst_picture = "~/Upload/InstruactorImage/" + upload.FileName;
@@ -171,8 +176,8 @@ namespace University_For_All.Controllers
             {
                 course.Instructorid = null;
             }
-            var oldImg = editedStaff.inst_picture.Substring(22);
-            System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\InstruactorImage\" + oldImg);
+            var oldImg = editedStaff.inst_picture.Substring(25);
+            System.IO.File.Delete(Server.MapPath("~/Upload/InstruactorImage/" + oldImg));
             db.SaveChanges();
             var user = UserManeger.FindByEmail(editedStaff.ints_email);
             UserManeger.Delete(user);

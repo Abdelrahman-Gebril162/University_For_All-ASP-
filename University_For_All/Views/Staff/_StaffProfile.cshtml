@@ -26,7 +26,10 @@
                 </a>
                 <ul class="submenu">
                     <li><a href="/Home">Home</a></li>
-                    <li><a href="/Staff/Edit/@Model.id">Edit</a></li>
+                    @if (User.Identity.Name != "admin@gmail.com")
+                    {
+                        <li><a href="/Staff/Edit/@Model.id">Edit</a></li>
+                    }
                     <li><a href="/Faculty">Faculty</a></li>
 
                 </ul>

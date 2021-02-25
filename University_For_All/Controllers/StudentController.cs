@@ -70,7 +70,13 @@ namespace University_For_All.Controllers
 
                 if (userWithSameEmail==null && userWithSamephone==null)
                 {
-                    student.st_picture = upload == null ? "~/images/male-student-icon-png_251938.jpg" : "~/Upload/StudentImage/" + upload.FileName;
+                    student.st_picture = upload == null ? "~/Upload/defaultImage/male-student-icon-png_251938.jpg" : "~/Upload/StudentImage/" + upload.FileName;
+                    if (upload==null)
+                    {
+                        System.IO.File.Copy(Server.MapPath("~/Upload/defaultImage/male-student-icon-png_251938.jpg"), Server.MapPath("~/Upload/StudentImage/male-student-icon-png_251938.jpg"), true);
+
+                    }
+
                     student.enroll_date = DateTime.Now;
                     db.Student.Add(student);
                     db.SaveChanges();
@@ -177,7 +183,7 @@ namespace University_For_All.Controllers
                 
                 if (upload != null)
                 {
-                    System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\StudentImage\" + oldImg);
+                    System.IO.File.Delete(Server.MapPath("~/Upload/StudentImage/") + oldImg);
                     var path = Path.Combine(Server.MapPath("~/Upload/StudentImage"), upload.FileName);
                     upload.SaveAs(path);
                     editedstudent.st_picture = "~/Upload/StudentImage/" + upload.FileName;
@@ -200,7 +206,7 @@ namespace University_For_All.Controllers
             var editedstudent = db.Student.SingleOrDefault(s => s.id == student.id);
             var studentEnroll = db.Takes.Where(t => t.Studentid == student.id).ToList();
             var oldImg = editedstudent.st_picture.Substring(22);
-            System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\StudentImage\" + oldImg);
+            System.IO.File.Delete(Server.MapPath("~/Upload/StudentImage/") + oldImg);
             db.Takes.RemoveRange(studentEnroll);
             db.SaveChanges();
             var user = UserManeger.FindByEmail(editedstudent.st_email);

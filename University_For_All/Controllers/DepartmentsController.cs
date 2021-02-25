@@ -39,6 +39,7 @@ namespace University_For_All.Controllers
         // GET: Departments/Create
         public ActionResult Create()
         {
+            
             ViewBag.Facultyid = new SelectList(db.Faculty, "id", "fc_name");
             if (db.Faculty.Count()==0)
             {

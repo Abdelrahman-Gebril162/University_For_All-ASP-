@@ -1,4 +1,9 @@
-﻿
+﻿@using University_For_All.Models
+
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+    var fId = @ViewBag.id;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +36,11 @@
                 }
                 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/Faculty/Edit/@ViewBag.id">Edit</a>
+                    @if (!(db.Faculty.Find(ViewBag.id).Equals(db.Faculty.Single(f=>f.fc_name=="Master"))))
+                    {
+                        <a class="dropdown-item" href="/Faculty/Edit/@ViewBag.id">Edit</a>
+                    }
+                        
                 </div>
             </div>
         </div>

@@ -18,8 +18,10 @@
     <div class="row">
         <div class="col-lg-2 " style="text-align: center;">
             <img src="@Url.Content(Model.inst_picture)" class="amira">
-
-            <a href="/Staff/Edit/@Model.id" class="change"> <figcaption class="figure-caption">edit photo</figcaption></a>
+            @if (User.Identity.Name != "admin@gmail.com")
+            {
+                <a href="/Staff/Edit/@Model.id" class="change"> <figcaption class="figure-caption">edit photo</figcaption></a>
+            }
 
         </div>
         <div class="bor col-lg-5 ">

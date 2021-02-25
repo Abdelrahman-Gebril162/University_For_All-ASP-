@@ -38,7 +38,12 @@ namespace University_For_All.Controllers
 
                 if (equalFaculty ==null)
                 {
-                    faculty.fc_logo = upload == null ? "~/Upload/Faculty_default.png" : "~/Upload/FacultyImage/" + upload.FileName;
+                    faculty.fc_logo = upload == null ? "~/Upload/defaultImage/Faculty_default.png" : "~/Upload/FacultyImage/" + upload.FileName;
+                    if (upload == null)
+                    {
+                        System.IO.File.Copy(Server.MapPath("~/Upload/defaultImage/Faculty_default.png"), Server.MapPath("~/Upload/FacultyImage/Faculty_default.png"), true);
+
+                    }
                     db.Faculty.Add(faculty);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -62,7 +67,7 @@ namespace University_For_All.Controllers
             facultyEdited.fc_description = faculty.fc_description;
             if (upload !=null)
             {
-                System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\FacultyImage\" + oldImg);
+                System.IO.File.Delete(Server.MapPath("~/Upload/FacultyImage/") + oldImg);
                 var path = Path.Combine(Server.MapPath("~/Upload/FacultyImage"), upload.FileName);
                 upload.SaveAs(path);
                 facultyEdited.fc_logo = "~/Upload/FacultyImage/" + upload.FileName;
@@ -102,7 +107,7 @@ namespace University_For_All.Controllers
                 db.Instructors.Remove(db.Instructors.Single(I => I.id == instructor.id));
                 db.SaveChanges();
             }
-            System.IO.File.Delete(@"D:\abdo\FCI\my work\web\University_For_All\University_For_All\Upload\FacultyImage\" + oldImg);
+            System.IO.File.Delete(Server.MapPath("~/Upload/FacultyImage/") + oldImg);
             db.Faculty.Remove(db.Faculty.Single(f => f.id == faculty.id));
             db.SaveChanges();
             return RedirectToAction("Index");
