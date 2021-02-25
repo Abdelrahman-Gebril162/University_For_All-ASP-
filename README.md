@@ -15,10 +15,10 @@ his/her grades  for The length of the study period. just visit and see more feat
 6. open nuget package console => click on restor button =>then, type (update-database).
 7. to see your database open sql server with "localhost" for server name.
 ## TeamWork
-*. abdelrahman gebril (Teamleader, Fullstack Web dDveloper)
-*. marwa ahmed (backend Developer)
-*. salma ibrahim (UI,Ux Designer)
-*.  amira Zakaria (Frontend Developer)
+* abdelrahman gebril (Teamleader, Fullstack Web dDveloper)
+* marwa ahmed (backend Developer)
+* salma ibrahim (UI,Ux Designer)
+*  amira Zakaria (Frontend Developer)
 
 ### Have A Nice Time 
 
