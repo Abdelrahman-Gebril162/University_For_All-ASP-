@@ -266,17 +266,9 @@
     <Compile Include="Migrations\202012182303011_changeLatterTypeInGrade.Designer.cs">
       <DependentUpon>202012182303011_changeLatterTypeInGrade.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012182329471_addLatterToGradeTable.cs" />
-    <Compile Include="Migrations\202012182329471_addLatterToGradeTable.Designer.cs">
-      <DependentUpon>202012182329471_addLatterToGradeTable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202012182333463_addAnnotationToGrade.cs" />
     <Compile Include="Migrations\202012182333463_addAnnotationToGrade.Designer.cs">
       <DependentUpon>202012182333463_addAnnotationToGrade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012190024166_addLatterToGradeModel.cs" />
-    <Compile Include="Migrations\202012190024166_addLatterToGradeModel.Designer.cs">
-      <DependentUpon>202012190024166_addLatterToGradeModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202012190025443_addDataToGradeLatter.cs" />
     <Compile Include="Migrations\202012190025443_addDataToGradeLatter.Designer.cs">
@@ -718,14 +710,8 @@
     <EmbeddedResource Include="Migrations\202012182303011_changeLatterTypeInGrade.resx">
       <DependentUpon>202012182303011_changeLatterTypeInGrade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012182329471_addLatterToGradeTable.resx">
-      <DependentUpon>202012182329471_addLatterToGradeTable.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012182333463_addAnnotationToGrade.resx">
       <DependentUpon>202012182333463_addAnnotationToGrade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012190024166_addLatterToGradeModel.resx">
-      <DependentUpon>202012190024166_addLatterToGradeModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012190025443_addDataToGradeLatter.resx">
       <DependentUpon>202012190025443_addDataToGradeLatter.cs</DependentUpon>

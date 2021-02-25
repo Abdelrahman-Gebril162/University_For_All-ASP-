@@ -20,8 +20,10 @@ namespace University_For_All.Controllers
         private readonly RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
         //View Form For Adding new student
         [HttpGet]
+        
         public ActionResult New()
         {
+            
             var faculties = db.Faculty.ToList();
             var rank = db.Ranks.ToList();
             var staffRoleCheck = roleManager.FindByName("professor");
