@@ -12,7 +12,7 @@ his/her grades  for The length of the study period. just visit and see more feat
    3.4. Windows Services Manager will open.
 5. start Sql services from services "SQL Server (MSSQLSERVER) , SQL Server Agent (MSSQLSERVER) , SQL Server VSS Writer" => Now Your server is opend.
 6. clone the project in your pc '>>git clone https://github.com/abdo-giprel/University_For_All.git'.   
-7. open nuget package console => click on restor button =>then, type (update-database).
+7. open nuget package console => click on restor button  (https://johanleino.files.wordpress.com/2013/06/image_thumb.png)=>then, type (update-database).
 8. to see your database open sql server with "localhost" for server name.
 ## TeamWork
 * abdelrahman gebril (Teamleader, Fullstack Web dDveloper)
