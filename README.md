@@ -14,7 +14,7 @@ his/her grades  for The length of the study period. just visit and see more feat
 6. clone the project in your pc '>>git clone https://github.com/abdo-giprel/University_For_All.git'.   
 7. open nuget package console => click on restor button
   ![restor button](https://johanleino.files.wordpress.com/2013/06/image_thumb.png "restore button")
-9. then, type (update-database).
+9. then, type (update-database). if not respond restart the project and type "update-database" again
 10. to see your database open sql server with "localhost" for server name.
 ## TeamWork
 * abdelrahman gebril (Teamleader, Fullstack Web dDveloper)
