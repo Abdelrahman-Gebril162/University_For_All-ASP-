@@ -13,6 +13,7 @@ using Microsoft.Owin.Security;
 
 namespace University_For_All.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdministrationController : Controller
     {
         private static ApplicationDbContext db = new ApplicationDbContext();

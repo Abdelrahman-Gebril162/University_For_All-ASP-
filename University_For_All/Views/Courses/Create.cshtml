@@ -78,14 +78,14 @@
 <script>
     $(document).ready(function() {
         $("#Facultyid").change(function () {
-            $.get("/Student/GetDepartmentList",
+            $.get("/Courses/GetStaffList",
                 { id: $("#Facultyid").val() },
                 function(data) {
                     $("#Instructorid").empty();
                     $.each(data,
                         function(index, row) {
                             $("#Instructorid")
-                                .append("<option value ='" + row.id + "'>" + row.name + "</option>")
+                                .append("<option value ='" + row.id + "'>" + row.inst_lname + "</option>")
                         });
                 });
         })

@@ -114,7 +114,7 @@ namespace University_For_All.Controllers
             return View(staff);
         }
         [HttpPost]
-        public ActionResult Save(Instructor instructor, int id, string newPassword, HttpPostedFileBase upload, string confirmPassword, string oldPassword, string from)
+        public ActionResult Save(Instructor instructor, int id, string inst_password, HttpPostedFileBase upload, string inst_confirmPassword, string oldPassword, string from)
         {
 
             var editedStaff = db.Instructors.SingleOrDefault(s => s.id == id);
@@ -122,10 +122,13 @@ namespace University_For_All.Controllers
             {
                 if (oldPassword == editedStaff.inst_password)
                 {
-                    editedStaff.inst_password = newPassword;
-                    editedStaff.inst_confirmPassword = confirmPassword;
+                    editedStaff.inst_password = inst_password;
+                    editedStaff.inst_confirmPassword = inst_confirmPassword;
                     db.SaveChanges();
                     var user = UserManeger.FindByEmail(editedStaff.ints_email);
+                    UserManeger.ChangePassword(User.Identity.GetUserId(), oldPassword, inst_confirmPassword);
+                    UserManeger.Update(user);
+                    db.SaveChanges();
                     Logout();
 
                 }
@@ -185,6 +188,7 @@ namespace University_For_All.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+        
         private IAuthenticationManager AuthenticationManager
         {
             get

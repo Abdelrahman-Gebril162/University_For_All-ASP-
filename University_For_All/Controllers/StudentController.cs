@@ -135,11 +135,11 @@ namespace University_For_All.Controllers
         public ActionResult Edit(int id,string routename)
         {
             var student = db.Student.Include(s => s.Faculty).Include(s => s.Department).SingleOrDefault(s => s.id == id);
-            if (routename== "change Password")
+            if (routename== "changePassword")
             {
                 return View("ChangePassword", student);
             }
-            else if (routename== "change Email")
+            else if (routename== "changeEmail")
             {
                 return View("ChangeEmail",student);
             }
@@ -147,18 +147,21 @@ namespace University_For_All.Controllers
             return View(student);
         }
         [HttpPost]
-        public ActionResult Save(Student student,int id,string newPassword,HttpPostedFileBase upload, string confirmPassword,string oldPassword, string from)
+        public ActionResult Save(Student student,int id,string st_password, HttpPostedFileBase upload, string st_confirmPassword, string oldPassword, string from)
         {
             
             var editedstudent = db.Student.SingleOrDefault(s => s.id == id);
+
             if (from== "changePassword")
             {
                 if (oldPassword == editedstudent.st_password)
                 {
-                    editedstudent.st_password = newPassword;
-                    editedstudent.st_confirmPassword = confirmPassword;
-                    db.SaveChanges();
+                    editedstudent.st_password = st_password;
+                    editedstudent.st_confirmPassword = st_confirmPassword;
                     var user = UserManeger.FindByEmail(editedstudent.st_email);
+                    UserManeger.ChangePassword(User.Identity.GetUserId(), oldPassword, st_confirmPassword);
+                    UserManeger.Update(user);
+                    db.SaveChanges();
                     Logout();
 
                 }
