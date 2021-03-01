@@ -60,7 +60,10 @@ namespace University_For_All.Controllers
                     Instructor.inst_picture = upload == null ? "~/Upload/defaultImage/staff.png" : "~/Upload/InstruactorImage/" + upload.FileName;
                     if (upload==null)
                     {
-                        System.IO.File.Copy(Server.MapPath("~/Upload/defaultImage/staff.png"), Server.MapPath("~/Upload/InstruactorImage/staff.png"), true);
+                        Random rr= new Random();
+                        string r = Convert.ToString(rr.Next());
+                        System.IO.File.Copy(Server.MapPath("~/Upload/defaultImage/staff.png"), Server.MapPath("~/Upload/InstruactorImage/staff"+r+".png"), false);
+                        Instructor.inst_picture = "~/Upload/InstruactorImage/staff" + r + ".png";
 
                     }
                     db.Instructors.Add(Instructor);

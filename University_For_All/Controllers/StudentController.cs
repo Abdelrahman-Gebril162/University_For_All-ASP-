@@ -73,7 +73,10 @@ namespace University_For_All.Controllers
                     student.st_picture = upload == null ? "~/Upload/defaultImage/male-student-icon-png_251938.jpg" : "~/Upload/StudentImage/" + upload.FileName;
                     if (upload==null)
                     {
-                        System.IO.File.Copy(Server.MapPath("~/Upload/defaultImage/male-student-icon-png_251938.jpg"), Server.MapPath("~/Upload/StudentImage/male-student-icon-png_251938.jpg"), true);
+                        Random rr = new Random();
+                        string r = Convert.ToString(rr.Next());
+                        System.IO.File.Copy(Server.MapPath("~/Upload/defaultImage/male-student-icon-png_251938.jpg"), Server.MapPath("~/Upload/StudentImage/student" + r + ".jpg"), false);
+                        student.st_picture = "~/Upload/StudentImage/student" + r + ".jpg";
 
                     }
 
